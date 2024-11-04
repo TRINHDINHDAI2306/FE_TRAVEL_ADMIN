@@ -2,9 +2,8 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom'
 
 import { ErrorFallback } from '@/components/common/ErrorFallback.tsx'
-import { AdminLayout } from '@/layouts/AdminLayout.tsx'
+import { AdminLayout } from '@/layouts/AdminLayout'
 import { ForgotPasswordPage } from '@/pages/auth/ForgotPassowdPage'
-
 import { GuestGuard } from '@/routes/components/GuestGuard.tsx'
 import { URL } from '@/utils/constants'
 

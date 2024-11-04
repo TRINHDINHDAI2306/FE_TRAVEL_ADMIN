@@ -20,7 +20,7 @@ export const OtpModal = ({ isOpenModal, handleCancel, user_email }: OtpModalProp
 
   const { mutate, isPending } = useVerifyOtpRegister({
     onError: (error) => {
-      message.error(error.response?.data?.message)
+      message.error(error.response?.message)
     },
     onSuccess: () => {
       message.success(t('register:verifySuccess'))
