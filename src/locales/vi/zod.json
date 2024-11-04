@@ -1,0 +1,24 @@
+{
+  "errors": {
+    "string": {
+      "type": "{{field}} phải là một chuỗi!",
+      "required": "{{field}} là bắt buộc!",
+      "min": "{{field}} phải có ít nhất {{min}} ký tự!",
+      "max": "{{field}} không được vượt quá {{max}} ký tự!",
+      "length": "{{field}} phải gồm {{length}} ký tự!"
+    },
+    "email": "Email không hợp lệ!",
+    "number": {
+      "type": "{{field}} phải là một số!",
+      "min": "{{field}} phải lớn hơn {{min}}!",
+      "max": "{{field}} phải nhỏ hơn {{max}}!"
+    },
+    "password": {
+      "notMatch": "Xác nhận mật khẩu phải giống với mật khẩu!",
+      "regex": "Mật khẩu phải có ít nhất 8 ký tự, bắt đầu bằng chữ cái viết hoa và phải chứa 1 ký tự đặc biệt!"
+    },
+    "array": {
+      "in": "{{field}} phải là một trong các giá trị sau: {{values}}"
+    }
+  }
+}

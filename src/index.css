@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+}
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.input-read-only .ant-form-item-label {
+  padding-bottom: 0 !important;
+}
+
+.ant-form-item-explain-error {
+  font-weight: normal !important;
+}
+.ant-form-item-label label {
+  font-weight: bold !important;
+}
+
+/* =================Custom table================*/
+.ant-table th {
+  /*background: black !important;*/
+  /*color: white !important;*/
+}
+.ant-table-cell:before {
+  height: 0 !important;
+}
+.ant-table {
+  border: 1px solid #0000001a;
+  border-radius: 8px !important;
+}
+
+.table-wrapper .ant-spin-nested-loading {
+  height: 100%;
+}
+
+/* =================End custom table================*/
+
+/* =============custom spin ============*/
+.ant-spin {
+  max-height: unset !important;
+  height: 100% !important;
+}
+/* =============end custom spin ============*/

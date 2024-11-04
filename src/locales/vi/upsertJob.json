@@ -1,0 +1,15 @@
+{
+  "selectCompany": "Hãy chọn công ty của bạn!",
+  "selectOccupation": "Hãy chọn ngành nghề!",
+  "selectExperience": "Hãy chọn kinh nghiệm!",
+  "noRequiredExperience": "Không yêu cầu kinh nghiệm",
+  "lowerThanOneYear": "Dưới 1 năm",
+  "lowerThanTwoYears": "Dưới 2 năm",
+  "lowerThanThreeYears": "Dưới 3 năm",
+  "upperThanThreeYears": "Trên 3 năm",
+  "softwareEngineer": "Kỹ sư phần mềm",
+  "dataScientist": "Nhà khoa học dữ liệu",
+  "graphicDesigner": "Nhà thiết kế đồ họa",
+  "productManager": "Quản lý sản phẩm",
+  "marketingSpecialist": "Chuyên gia tiếp thị"
+}

@@ -1,0 +1,9 @@
+{
+  "title": "Tải lên tệp",
+  "description": "Nhấp hoặc kéo tệp để tải tệp lên khu vực này",
+  "success": "Tải lên thành công!",
+  "error": "Thêm File thất bại!",
+  "notCv": "CV không hợp lệ. Vui lòng chọn CV đúng!",
+  "CvSuccess": "Bạn đã tải lên CV thành công!",
+  "CvError": "CV Tải lên thất bại!"
+}

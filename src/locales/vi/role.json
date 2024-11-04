@@ -1,0 +1,11 @@
+{
+  "title": "Vai trò",
+  "deleteTitle": "Xóa vai trò!",
+  "deleteDescription": "Bạn có chắc chắn xóa vai trò này?",
+  "createSuccess": "Tạo vai trò thành công",
+  "editSuccess": "Cập nhật vai trò thành công",
+  "createError": "Có lỗi trong quá trình tạo vai trò",
+  "editError": "Có lỗi trong quá trình cập nhật vai trò",
+  "deleteSuccess": "Xóa vai trò thành công",
+  "deleteError": "Xóa vai trò thất bại"
+}

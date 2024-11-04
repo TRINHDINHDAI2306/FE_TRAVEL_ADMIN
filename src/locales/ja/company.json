@@ -1,0 +1,39 @@
+{
+  "title": "Công ty",
+  "create": {
+    "title": "Tạo Công ty",
+    "error": "Đăng ký công ty không thành công!",
+    "success": "Đăng ký công ty thành công!"
+  },
+  "update": {
+    "title": "Cập nhật Công ty",
+    "error": "Cập nhật công ty không thành công!",
+    "success": "Cập nhật công ty thành công!"
+  },
+  "form": {
+    "STT": "STT",
+    "name": "Tên Công ty",
+    "size": "Quy mô",
+    "email": "Email",
+    "address": "Địa chỉ",
+    "introduction": "Giới thiệu",
+    "links": "Liên kết",
+    "logo": "Logo",
+    "banner": "Banner",
+    "created_at": "Ngày tạo",
+    "updated_at": "Ngày cập nhật",
+    "action": "Hành động"
+  },
+  "verifyOtp": {
+    "title": "Xác minh OTP",
+    "error": "Xác minh OTP không thành công!",
+    "success": "Xác minh OTP thành công!",
+    "otp": "OTP",
+    "enter_otp": "Nhập OTP"
+  },
+  "delete": {
+    "success": "Xóan công ty thành công!",
+    "error": "Xóa công ty không thành công!",
+    "confirm": "Bạn có chắc chắn xóa công ty này?"
+  }
+}

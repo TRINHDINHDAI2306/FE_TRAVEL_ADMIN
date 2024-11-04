@@ -1,0 +1,12 @@
+{
+  "title": "Tên công việc",
+  "address": "Địa chỉ",
+  "salary": "Mức lương",
+  "experience": "Kinh nghiệm",
+  "description": "Mô tả",
+  "requirements": "Yêu cầu",
+  "benefits": "Quyền lợi",
+  "addressDetail": "Địa chỉ chi tiết",
+  "applicationMethod": "Phương thức",
+  "avatarCompany": "Logo công ty"
+}

@@ -1,0 +1,12 @@
+{
+  "tittle": "Người dùng HR",
+  "create": {
+    "title": "Thêm HR",
+    "error": "Thêm HR không thành công!",
+    "success": "Thêm HR thành công!"
+  },
+  "form": {
+    "email": "Email",
+    "companyId": "ID Công ty"
+  }
+}

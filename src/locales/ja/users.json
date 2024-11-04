@@ -1,0 +1,24 @@
+{
+  "title": "Người dùng",
+  "update": {
+    "title": "Cập nhật người dùng",
+    "error": "Cập nhật người dùng thất bại!",
+    "success": "Cập nhật người dùng thành công!"
+  },
+  "form": {
+    "STT": "STT",
+    "name": "Tên",
+    "email": "Email",
+    "role": "Quyền",
+    "status": "Trạng thái",
+    "client": "Khách",
+    "createdAt": "Ngày tạo",
+    "updatedAt": "Ngày cập nhật",
+    "actions": "Hành động"
+  },
+  "delete": {
+    "success": "Xóa người dùng thành công!",
+    "error": "Không thể xoá người dùng này. Hãy kiểm tra và thử lại!",
+    "confirm": "Bạn có chắc chắn muốn xóa người dùng này?"
+  }
+}

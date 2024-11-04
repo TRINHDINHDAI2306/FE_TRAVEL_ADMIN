@@ -1,0 +1,12 @@
+{
+  "title": "Việc làm",
+  "selectExperience": "Hãy chọn kinh nghiệm!",
+  "deleteTitle": "Xóa công việc!",
+  "deleteDescription": "Bạn có chắc chắn xóa công việc này?",
+  "createSuccess": "Tạo công việc thành công",
+  "editSuccess": "Cập nhật công việc thành công",
+  "createError": "Có lỗi trong quá trình tạo công việc",
+  "editError": "Có lỗi trong quá trình cập nhật công việc",
+  "deleteSuccess": "Xóa công việc thành công",
+  "deleteError": "Xóa công việc thất bại"
+}

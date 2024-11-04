@@ -1,0 +1,37 @@
+{
+  "title": "Hồ sơ",
+  "subtitle": "Hồ sơ của công việc",
+  "form": {
+    "STT": "STT",
+    "job": "Tên công việc",
+    "company": "Tên công ty",
+    "created_at": "Ngày nộp",
+    "updatedAt": "Ngày cập nhật",
+    "userName": "Tên người nộp",
+    "userEmail": "Email người nộp",
+    "status": "Trạng thái",
+    "action": "Hành động",
+    "address": "Địa chỉ",
+    "email": "Email",
+    "Cv": "CV đã nộp:"
+  },
+  "update": {
+    "title": "Cập nhật hồ sơ",
+    "success": "Cập nhật hồ sơ thành công!",
+    "error": "Cập nhật hồ sơ thất bại!"
+  },
+  "delete": {
+    "success": "Xóa hồ sơ thành công!",
+    "error": "Xóa hồ sơ thất bại!",
+    "confirm": "Bạn có chắc chắn xóa hồ sơ này?"
+  },
+  "status": {
+    "read": "Đã xem",
+    "approved": "Phê duyệt",
+    "rejected": "Từ chối",
+    "unread": "Chưa đọc"
+  },
+  "download": {
+    "error": "Tải xuống thất bại!"
+  }
+}
