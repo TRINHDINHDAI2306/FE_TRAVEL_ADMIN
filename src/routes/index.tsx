@@ -2,10 +2,11 @@ import { ErrorBoundary } from 'react-error-boundary'
 import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom'
 
 import { ErrorFallback } from '@/components/common/ErrorFallback.tsx'
+import { PageWrapper } from '@/components/common/PageWrapper'
 import { AdminLayout } from '@/layouts/AdminLayout'
-import { ForgotPasswordPage } from '@/pages/auth/ForgotPassowdPage'
-import { GuestGuard } from '@/routes/components/GuestGuard.tsx'
+import { lazyImport } from '@/lib/layzy-import'
 import { URL } from '@/utils/constants'
+const { MamageAdminList } = lazyImport(() => import('@/pages/manager-admins/ManageAdminList'), 'MamageAdminList')
 
 const routes: RouteObject[] = [
   {
@@ -18,50 +19,17 @@ const routes: RouteObject[] = [
     children: [
       {
         index: true,
-        element: <Navigate to='/role' />,
+        element: <Navigate to={URL.MANAGE_ADMIN} />,
+      },
+      {
+        path: URL.MANAGE_ADMIN,
+        element: (
+          <PageWrapper>
+            <MamageAdminList />
+          </PageWrapper>
+        ),
       },
     ],
-  },
-  // {
-  //   path: URL.LOGIN,
-  //   element: (
-  //     <GuestGuard>
-  //       <AuthLayout title={i18n.t('auth:login.title')}>
-  //         <LoginPage />
-  //       </AuthLayout>
-  //     </GuestGuard>
-  //   ),
-  // },
-  // {
-  //   path: URL.REGISTER,
-  //   element: (
-  //     <GuestGuard>
-  //       <AuthLayout title={i18n.t('auth:register.title')}>
-  //         <RegisterPage />
-  //       </AuthLayout>
-  //     </GuestGuard>
-  //   ),
-  // },
-  {
-    path: '/forgot-password',
-    element: (
-      <GuestGuard>
-        <ForgotPasswordPage />
-      </GuestGuard>
-    ),
-  },
-  // {
-  //   path: '/user/pwdreset',
-  //   element: (
-  //     <GuestGuard>
-  //       <UpdatePasswordPage />
-  //     </GuestGuard>
-  //   ),
-  // },
-  //
-  {
-    path: URL.FORBIDDEN,
-    element: <ErrorFallback />,
   },
   {
     path: '*',

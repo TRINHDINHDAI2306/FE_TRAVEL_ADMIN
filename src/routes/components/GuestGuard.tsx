@@ -9,18 +9,8 @@ import { URL } from '@/utils/constants'
 export const GuestGuard = ({ children }: { children: ReactNode }) => {
   const authUser = useAuthStore.use.auth()
 
-  if (authUser) {
-    switch (authUser.role_name) {
-      case 'SUPER_ADMIN':
-        return <Navigate to={URL.PERMISSION} replace />
-      case 'ADMIN_COMPANY':
-        return <Navigate to={URL.JOB} replace />
-      case 'HR_USER':
-        return <Navigate to={URL.JOB} replace />
-      case 'NORMAL_USER':
-        return <Navigate to={URL.JOB_LISTING} replace />
-    }
-  }
+  // if (authUser) {
+  // }
 
   return <ErrorBoundary fallback={<ErrorFallback />}>{children}</ErrorBoundary>
 }

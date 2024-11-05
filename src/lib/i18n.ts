@@ -19,7 +19,7 @@ export const I18nInstance = createInstance()
 const localsConfigs = {
   ja: { ...loadLangFile() },
   vi: {
-    ...loadLangFile('ja'),
+    ...loadLangFile('vi'),
   },
 }
 

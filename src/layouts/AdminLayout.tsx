@@ -1,11 +1,17 @@
 import {
+  BankOutlined,
+  CloudServerOutlined,
+  ContainerOutlined,
   DownOutlined,
-  HddOutlined,
+  FormOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  ProfileOutlined,
+  PieChartOutlined,
+  PlusOutlined,
   ReconciliationOutlined,
+  SnippetsOutlined,
   SolutionOutlined,
+  TagOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons'
@@ -15,10 +21,12 @@ import Sider from 'antd/es/layout/Sider'
 import stringify from 'query-string'
 import { FC, useLayoutEffect, useMemo, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
-import { Link, Navigate, Outlet, useLocation, useMatches } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
+import { Link, Outlet, useLocation, useMatches } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
 
+import logo from '@/assets/logo.png'
 import { ErrorFallback } from '@/components/common/ErrorFallback.tsx'
 import { I18nInstance as i18n } from '@/lib/i18n'
 import useAuthStore from '@/stores/auth.store.ts'
@@ -29,54 +37,79 @@ type MenuConfig = {
   title: string
   icon: FC<any>
   href: string
-  role: 'SUPER_ADMIN' | 'HR_USER' | 'ADMIN_COMPANY' | string[]
 }
+
 const menuConfigDefault: MenuConfig[] = [
   {
     id: 1,
-    title: i18n.t('permission:title'),
-    icon: HddOutlined,
-    href: URL.PERMISSION,
-    role: 'SUPER_ADMIN',
+    title: i18n.t('manageAdmin:TITLE_PAGE'),
+    icon: TeamOutlined,
+    href: URL.MANAGE_ADMIN,
   },
   {
     id: 2,
-    title: i18n.t('role:title'),
-    icon: TeamOutlined,
-    href: URL.ROLE,
-    role: 'SUPER_ADMIN',
+    title: i18n.t('manageUser:TITLE_PAGE'),
+    icon: SolutionOutlined,
+    href: URL.MANAGE_USER,
   },
   {
     id: 3,
-    title: i18n.t('job:title'),
-    icon: SolutionOutlined,
-    href: URL.JOB,
-    role: ['HR_USER', 'ADMIN_COMPANY'],
+    title: i18n.t('manageGuide:TITLE_PAGE'),
+    icon: UserOutlined,
+    href: URL.MANAGE_GUIDE,
   },
   {
     id: 4,
-    title: i18n.t('company:title'),
+    title: i18n.t('manageTour:TITLE_PAGE'),
     icon: ReconciliationOutlined,
-    href: URL.COMPANY,
-    role: 'SUPER_ADMIN',
+    href: URL.MANAGE_TOUR,
   },
   {
     id: 5,
-    title: i18n.t('users:title'),
-    icon: UserOutlined,
-    href: URL.USERS,
-    role: 'ADMIN_COMPANY',
+    title: i18n.t('managePost:TITLE_PAGE'),
+    icon: ContainerOutlined,
+    href: URL.MANAGE_BLOG,
   },
   {
     id: 6,
-    title: i18n.t('resumes:title'),
-    icon: ProfileOutlined,
-    href: URL.RESUMES,
-    role: ['HR_USER', 'ADMIN_COMPANY'],
+    title: i18n.t('reportPost:TITLE_PAGE'),
+    icon: FormOutlined,
+    href: URL.MANAGE_VOUCHER,
+  },
+  {
+    id: 7,
+    title: i18n.t('reportGuide:TITLE_PAGE'),
+    icon: SnippetsOutlined,
+    href: URL.REPORT_GUIDE,
+  },
+  {
+    id: 8,
+    title: i18n.t('manageVoucher:TITLE_PAGE'),
+    icon: TagOutlined,
+    href: URL.MANAGE_VOUCHER,
+  },
+  {
+    id: 9,
+    title: i18n.t('manageWithdrawals:TITLE_PAGE'),
+    icon: BankOutlined,
+    href: URL.MANAGE_WITHDRAWAL,
+  },
+  {
+    id: 10,
+    title: i18n.t('statistics:TITLE_PAGE'),
+    icon: PieChartOutlined,
+    href: URL.MANAGE_WITHDRAWAL,
+  },
+  {
+    id: 11,
+    title: i18n.t('systems:TITLE_PAGE'),
+    icon: CloudServerOutlined,
+    href: URL.MANAGE_WITHDRAWAL,
   },
 ]
 
 export const AdminLayout = () => {
+  const { t } = useTranslation()
   const [collapsed, setCollapsed] = useState(false)
   const [title, setTitle] = useState<string>('')
   const [createLink, setCreateLink] = useState<string>('')
@@ -91,13 +124,8 @@ export const AdminLayout = () => {
 
   const items: MenuProps['items'] = [
     {
-      key: '1',
-      label: <Link to={URL.ADMIN_UPDATE_PROFILE}>{i18n.t('updateProfile:title')}</Link>,
-      icon: <UserOutlined />,
-    },
-    {
       key: '2',
-      label: i18n.t('button:logout'),
+      label: i18n.t('button:BUTTON.LOGOUT'),
       icon: <UserOutlined />,
       onClick: () => {
         setAuth(undefined)
@@ -110,8 +138,8 @@ export const AdminLayout = () => {
   const isUpsert = useMemo(
     () =>
       location.pathname.includes('create') ||
-      location?.pathname.includes('edit') ||
-      location?.pathname.includes('update'),
+      location.pathname.includes('edit') ||
+      location.pathname.includes('update'),
     [location.pathname],
   )
 
@@ -119,11 +147,11 @@ export const AdminLayout = () => {
 
   useLayoutEffect(() => {
     if (!window.navigator.onLine) {
-      throw Error('off line')
+      throw Error('offline')
     }
   }, [])
 
-  if (!auth) return <Navigate to={URL.LOGIN} replace />
+  // if (!auth) return <Navigate to={URL.LOGIN} replace />
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>
@@ -145,20 +173,22 @@ export const AdminLayout = () => {
             <Menu
               mode='inline'
               theme='dark'
-              selectedKeys={[matches[1]['pathname']]}
+              selectedKeys={[location.pathname]}
               className='left-0 top-0 bottom-0 min-h-screen sticky'
             >
-              {menuConfigDefault.map((item) => {
-                if ((Array.isArray(item.role) && item.role.includes(auth.role_name)) || auth.role_name === item.role)
-                  return (
-                    <Menu.Item key={item.href}>
-                      <Link to={item.href}>
-                        <item.icon style={{ fontSize: '20px' }} />
-                        <span>{item.title}</span>
-                      </Link>
-                    </Menu.Item>
-                  )
-              })}
+              <Flex justify='center'>
+                <Link to='/'>
+                  <img src={logo} alt='logo' className='w-20 h-20' />
+                </Link>
+              </Flex>
+              {menuConfigDefault.map((item) => (
+                <Menu.Item key={item.href}>
+                  <Link to={item.href}>
+                    <item.icon style={{ fontSize: '20px' }} />
+                    <span>{item.title}</span>
+                  </Link>
+                </Menu.Item>
+              ))}
             </Menu>
           </Sider>
           <Layout className='flex-grow'>
@@ -168,7 +198,7 @@ export const AdminLayout = () => {
                 boxShadow:
                   'rgba(0, 0, 0, 0.2) 0px 2px 4px -1px, rgba(0, 0, 0, 0.14) 0px 1px 1px 0px, rgba(0, 0, 0, 0.12) 0px 1px 2px 0px',
               }}
-              className={`top-0 z-10 w-full flex items-center justify-between sticky !px-4 h-[64px]`}
+              className='top-0 z-10 w-full flex items-center justify-between sticky !px-4 h-[64px]'
             >
               <Button
                 type='text'
@@ -177,7 +207,7 @@ export const AdminLayout = () => {
                 className='!text-base !w-10 !h-10 !rounded'
               />
               {auth && (
-                <Flex justify='center' align='center' gap={20} className='mr-5'>
+                <Space className='mr-5' align='center'>
                   <Image
                     src={auth.user_avatar_url}
                     height={40}
@@ -194,22 +224,25 @@ export const AdminLayout = () => {
                       </Space>
                     </Button>
                   </Dropdown>
-                </Flex>
+                </Space>
               )}
             </Header>
             <Content className='m-4 min-h-[300px]'>
-              <Flex justify={isUpsert ? 'flex-start' : 'space-between'} align='center'>
+              <div className='flex justify-between items-center'>
                 {!isResumes && (
                   <>
                     <Typography.Title level={2}>{title}</Typography.Title>
                     {!isUpsert && (
                       <Button type='primary' size='large'>
-                        <Link to={createLink}>{i18n.t('button:create')}</Link>
+                        <Link to={createLink}>
+                          <PlusOutlined />
+                          {i18n.t('button:BUTTON.CREATE')}
+                        </Link>
                       </Button>
                     )}
                   </>
                 )}
-              </Flex>
+              </div>
               <Outlet context={{ setTitle, setCreateLink }} />
             </Content>
           </Layout>
