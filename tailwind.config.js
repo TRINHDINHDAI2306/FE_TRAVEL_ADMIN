@@ -1,11 +1,57 @@
-/** @type {import('tailwindcss').Config} */
-export default {
+module.exports = {
   content: ['./index.html', './src/**/*.{js,ts,jsx,tsx}'],
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        'primary-dark-blue': '#275DA2',
+        'primary-dark-blue-hover': '#1F4A82',
+        'primary-dark-blue-10': '#E9EFF6',
+        'primary-dark-blue-5': '#F4F7FA',
+        'primary-black': '#3C3930',
+        'primary-black-hover': '#302E26',
+        'primary-black-5': '#F5F5F5',
+        'primary-black-10': '#EBEBEA',
+        'primary-light-blue': '#4495C4',
+        'primary-light-blue-hover': '#36779D',
+        'primary-light-blue-10': '#ECF4F9',
+        black: '#233640',
+        'black-80': '#4F5E66',
+        'black-60': '#7B868C',
+        'black-50': '#909A9F',
+        'black-50-hover': '#737B7F',
+        'black-30': '#F5F5F5',
+        border: '#C6D1DD',
+        white: '#FFFFFF',
+        red: '#F22C2C',
+        'red-hover': '#C22323',
+        'red-disable': '#E78484',
+        'red-10': '#FEEAEA',
+        yellow: '#F2A32D',
+        'yellow-10': '#FEF6EA',
+        green: '#52C41A',
+        'green-10': '#F6FFED',
+      },
+      maxHeight: {
+        'side-menu': 'calc(100vh - 72px)',
+      },
+      boxShadow: {
+        header: '0px -1px 0px 0px #F0F0F0 inset',
+        auth: '0px 0px 40px 0px rgba(0,0,0,0.05)',
+      },
+      width: {
+        'auth-layout': 'calc(100% - 48px)',
+        '1/16': 'calc(100% / 16)',
+        '1/15': 'calc(100% / 15)',
+      },
+    },
+    screens: {
+      sp: { max: '767px' },
+      tab: { max: '1023px' },
+      pc: { max: '1279px' },
+      searchXs: { max: '575px' },
+      searchMd: { max: '977px' },
+      searchLg: { max: '1050px' },
+    },
   },
   plugins: [],
-  corePlugins: {
-    preflight: false,
-  },
-};
+}

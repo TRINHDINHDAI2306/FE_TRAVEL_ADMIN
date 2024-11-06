@@ -1,0 +1,11 @@
+{
+  "ERROR": {
+    "WEB_E_MSG_001":"{{field}} không được để trống",
+    "WEB_E_MSG_002":"Hãy chọn {{field}}"
+  },
+  "SUCCESS": {},
+  "INFO": {
+    "WEB_I_MSG_019": "Không có dữ liệu tương ứng"
+  },
+  "WARNING": {}
+}

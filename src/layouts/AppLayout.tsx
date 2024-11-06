@@ -7,7 +7,6 @@ import {
   MenuFoldOutlined,
   MenuUnfoldOutlined,
   PieChartOutlined,
-  PlusOutlined,
   ReconciliationOutlined,
   SnippetsOutlined,
   SolutionOutlined,
@@ -15,7 +14,7 @@ import {
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import { Button, Dropdown, Flex, Image, Layout, Menu, MenuProps, Space, theme, Typography } from 'antd'
+import { Button, Dropdown, Flex, Image, Layout, Menu, MenuProps, Space, theme } from 'antd'
 import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import stringify from 'query-string'
@@ -174,7 +173,7 @@ export const AdminLayout = () => {
               mode='inline'
               theme='dark'
               selectedKeys={[location.pathname]}
-              className='left-0 top-0 bottom-0 min-h-screen sticky'
+              className='left-0 top-0 bottom-0 min-h-screen sticky font-bold'
             >
               <Flex justify='center'>
                 <Link to='/'>
@@ -182,7 +181,7 @@ export const AdminLayout = () => {
                 </Link>
               </Flex>
               {menuConfigDefault.map((item) => (
-                <Menu.Item key={item.href}>
+                <Menu.Item key={item.href} className='!h-12'>
                   <Link to={item.href}>
                     <item.icon style={{ fontSize: '20px' }} />
                     <span>{item.title}</span>
@@ -228,21 +227,6 @@ export const AdminLayout = () => {
               )}
             </Header>
             <Content className='m-4 min-h-[300px]'>
-              <div className='flex justify-between items-center'>
-                {!isResumes && (
-                  <>
-                    <Typography.Title level={2}>{title}</Typography.Title>
-                    {!isUpsert && (
-                      <Button type='primary' size='large'>
-                        <Link to={createLink}>
-                          <PlusOutlined />
-                          {i18n.t('button:BUTTON.CREATE')}
-                        </Link>
-                      </Button>
-                    )}
-                  </>
-                )}
-              </div>
               <Outlet context={{ setTitle, setCreateLink }} />
             </Content>
           </Layout>

@@ -6,21 +6,22 @@ module.exports = {
     'plugin:@typescript-eslint/recommended',
     'plugin:react-hooks/recommended',
     'eslint-config-prettier',
-    'prettier'
+    'prettier',
   ],
   ignorePatterns: ['dist', '.eslintrc.cjs'],
   parser: '@typescript-eslint/parser',
   plugins: ['react-refresh', 'import', 'prettier'],
   rules: {
-    "react-hooks/exhaustive-deps": "off",
+    'react-hooks/exhaustive-deps': 'off',
+    '@typescript-eslint/ban-ts-comment': 'off',
     'react-refresh/only-export-components': ['warn', { allowConstantExport: true }],
     'import/order': [
       'error',
       {
         groups: ['builtin', 'external', 'parent', 'sibling', 'index'],
         'newlines-between': 'always',
-        alphabetize: { order: 'asc', caseInsensitive: true }
-      }
+        alphabetize: { order: 'asc', caseInsensitive: true },
+      },
     ],
     'prettier/prettier': [
       'warn',
@@ -33,8 +34,8 @@ module.exports = {
         useTabs: false,
         singleQuote: true,
         printWidth: 120,
-        jsxSingleQuote: true
-      }
-    ]
-  }
+        jsxSingleQuote: true,
+      },
+    ],
+  },
 }

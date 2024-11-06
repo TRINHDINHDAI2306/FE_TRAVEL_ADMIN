@@ -38,7 +38,6 @@ export const ErrorFallback = ({ error }: { error?: any }) => {
       pathname !== originalPathname.current ||
       (pathname === originalPathname.current && originalSearch.current !== search)
     ) {
-      console.log('hello')
       resetBoundary()
     }
   }, [location?.pathname, location?.search, error])

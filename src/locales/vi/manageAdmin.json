@@ -1,3 +1,21 @@
 {
-  "TITLE_PAGE": "Quản lý quản trị viên"
+  "TITLE_PAGE": "Quản lý quản trị viên",
+  "TITLE_CARD": "Tổng số Quản trị viên / Quản lý: ",
+  "FIELD": {
+    "NO": "STT",
+    "USER_NAME": "Tên người dùng",
+    "EMAIL": "Email",
+    "ROLE": "Quyền hạn",
+    "STATUS": "Trạng thái",
+    "ACTION": "Hành động"
+  },
+  "MODAL_MANAGE_ADMIN": {
+    "TITLE_ADD": "Thêm tài khoản",
+    "TITLE_DELETE": "Xóa tài khoản",
+    "EMAIL": "Email",
+    "USER_NAME": "Tên người dùng",
+    "ROLE": "Quyền hạn",
+    "ADMIN": "Quản trị viên",
+    "MOD": "Quản lý"
+  }
 }

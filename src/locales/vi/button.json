@@ -3,6 +3,11 @@
   "BUTTON": {
     "LOGIN": "Đăng nhập",
     "LOGOUT": "Đăng xuất",
-    "CREATE": "Tạo mới"
+    "CREATE": "Tạo mới",
+    "CANCEL": "Hủy"
+  },
+  "MODAL": {
+    "OK": "Đồng ý",
+    "CANCEL": "Hủy"
   }
 }

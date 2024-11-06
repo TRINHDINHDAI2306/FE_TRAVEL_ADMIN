@@ -1,7 +1,7 @@
 export type Meta = {
-  totalItems: number
+  total: number
   itemCount: number
-  itemsPerPage: number
+  limit: number
   totalPages: number
   currentPage: number
 }
@@ -50,4 +50,16 @@ export type TAdminContext = {
 export type TOption = {
   label: string
   value: number | string
+}
+
+type TError = {
+  code: string
+  message: string
+  details: {
+    property: string
+  }[]
+}
+
+export type ResponseError = {
+  error: TError
 }

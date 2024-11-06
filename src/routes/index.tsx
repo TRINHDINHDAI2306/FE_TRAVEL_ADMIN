@@ -3,7 +3,7 @@ import { createBrowserRouter, Navigate, RouteObject } from 'react-router-dom'
 
 import { ErrorFallback } from '@/components/common/ErrorFallback.tsx'
 import { PageWrapper } from '@/components/common/PageWrapper'
-import { AdminLayout } from '@/layouts/AdminLayout'
+import { AdminLayout } from '@/layouts/AppLayout'
 import { lazyImport } from '@/lib/layzy-import'
 import { URL } from '@/utils/constants'
 const { MamageAdminList } = lazyImport(() => import('@/pages/manager-admins/ManageAdminList'), 'MamageAdminList')
