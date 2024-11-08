@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { ManageAdmin } from '@/types/manageAdmin.type'
+import { ApprovalRequestGuide } from '@/types/manageGuide.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<ManageAdmin>['columns'] = [
+const columns: TableProps<ApprovalRequestGuide>['columns'] = [
   {
-    title: i18n.t('manageAdmin:FIELD.NO'),
+    title: i18n.t('manageGuide:FIELD.NO'),
     dataIndex: 'STT',
     width: '40px',
     key: 'id',
@@ -18,7 +18,15 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.USER_NAME'),
+    title: i18n.t('manageGuide:FIELD.FULL_NAME'),
+    dataIndex: 'name',
+    key: 'name',
+    render(name) {
+      return isDataLoadPage(name) ? <SkeletonRowTable /> : <ColumnEllipsis value={name} />
+    },
+  },
+  {
+    title: i18n.t('manageGuide:FIELD.USER_NAME'),
     dataIndex: 'username',
     key: 'username',
     render(username) {
@@ -26,7 +34,7 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.EMAIL'),
+    title: i18n.t('manageGuide:FIELD.EMAIL'),
     dataIndex: 'email',
     key: 'email',
     render(email) {
@@ -34,35 +42,22 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.ROLE'),
-    dataIndex: 'role',
-    key: 'role',
-    render(role) {
-      return isDataLoadPage(role) ? <SkeletonRowTable /> : <ColumnEllipsis value={role} />
+    title: i18n.t('manageGuide:FIELD.PROVINCE'),
+    dataIndex: 'provinceName',
+    key: 'provinceName',
+    render(provinceName) {
+      return isDataLoadPage(provinceName) ? <SkeletonRowTable /> : <ColumnEllipsis value={provinceName} />
     },
-  },
-  {
-    title: i18n.t('manageAdmin:FIELD.STATUS'),
-    dataIndex: 'status',
-    key: 'status',
-    render(status) {
-      return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
-    },
-  },
-  {
-    title: i18n.t('manageAdmin:FIELD.ACTION'),
-    dataIndex: 'action',
-    key: 'action',
   },
 ]
 
 type Props = {
-  data?: ManageAdmin[]
+  data?: ApprovalRequestGuide[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const ManageAdminTable = ({ data, isLoading, isFetching }: Props) => {
+export const ApprovalRequestGuideTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -74,7 +69,11 @@ export const ManageAdminTable = ({ data, isLoading, isFetching }: Props) => {
         emptyText: t('message:INFO.WEB_I_MSG_001'),
       }}
       columns={columns}
-      dataSource={isLoading ? generateDefaultData<ManageAdmin>(['id', 'username', 'role', 'email', 'status']) : data}
+      dataSource={
+        isLoading
+          ? generateDefaultData<ApprovalRequestGuide>(['id', 'name', 'username', 'provinceName', 'email'])
+          : data
+      }
       bordered
       loading={{
         spinning: isLoading ? false : isFetching,

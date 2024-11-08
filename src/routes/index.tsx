@@ -6,7 +6,9 @@ import { PageWrapper } from '@/components/common/PageWrapper'
 import { AdminLayout } from '@/layouts/AppLayout'
 import { lazyImport } from '@/lib/layzy-import'
 import { URL } from '@/utils/constants'
-const { MamageAdminList } = lazyImport(() => import('@/pages/manager-admins/ManageAdminList'), 'MamageAdminList')
+const { ManageAdminList } = lazyImport(() => import('@/pages/manager-admins/ManageAdminList'), 'ManageAdminList')
+const { ManageUserList } = lazyImport(() => import('@/pages/manage-users/ManageUserList'), 'ManageUserList')
+const { ManageGuide } = lazyImport(() => import('@/pages/manage-guides/ManageGuide'), 'ManageGuide')
 
 const routes: RouteObject[] = [
   {
@@ -25,7 +27,23 @@ const routes: RouteObject[] = [
         path: URL.MANAGE_ADMIN,
         element: (
           <PageWrapper>
-            <MamageAdminList />
+            <ManageAdminList />
+          </PageWrapper>
+        ),
+      },
+      {
+        path: URL.MANAGE_USER,
+        element: (
+          <PageWrapper>
+            <ManageUserList />
+          </PageWrapper>
+        ),
+      },
+      {
+        path: URL.MANAGE_GUIDE,
+        element: (
+          <PageWrapper>
+            <ManageGuide />
           </PageWrapper>
         ),
       },

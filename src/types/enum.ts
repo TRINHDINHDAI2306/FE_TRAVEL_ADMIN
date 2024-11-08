@@ -14,3 +14,10 @@ export enum SecondaryButtonType {
   Detail,
   Stop,
 }
+
+export enum StatusGuide {
+  WAITING_INTERVIEW = 'WAITING_INTERVIEW',
+  REJECTED = 'REJECTED',
+  ACTIVE = 'ACTIVE',
+  PENDING = 'PENDING',
+}

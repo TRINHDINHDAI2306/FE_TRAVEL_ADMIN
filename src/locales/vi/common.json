@@ -1,0 +1,11 @@
+{
+  "MODAL": {
+    "": "DELETE_TITLE"
+  },
+  "ERROR_PAGE": {
+    "403": "Bạn không có quyền truy cập trang này.",
+    "404": "Trang không tồn tại.",
+    "500": "Đã xảy ra lỗi máy chủ.",
+    "ERR_NETWORK": "Đã xảy ra lỗi kết nối mạng."
+  }
+}

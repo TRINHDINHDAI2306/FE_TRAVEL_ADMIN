@@ -1,4 +1,21 @@
 {
-    "TITLE_PAGE": "Quản lý người dùng"
+  "TITLE_PAGE": "Quản lý người dùng",
+  "TITLE_CARD":"Tổng số người dùng: ",
+  "FIELD": {
+    "NO": "STT",
+    "USER_NAME": "Tên người dùng",
+    "EMAIL": "Email",
+    "PHONE": "Số điện thoại",
+    "STATUS": "Trạng thái",
+    "ACTION": "Hành động"
+  },
+  "MODAL_MANAGE_ADMIN": {
+    "TITLE_EDIT": "Chỉnh sửa thông tin",
+    "TITLE_DELETE": "Xóa tài khoản",
+    "EMAIL": "Email",
+    "USER_NAME": "Tên người dùng",
+    "STATUS": "Trạng thái tài khoản",
+    "ACTIVE": "Hoạt động",
+    "INACTIVE": "Ngưng hoạt động"
   }
-  
+}

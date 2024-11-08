@@ -4,10 +4,12 @@
     "LOGIN": "Đăng nhập",
     "LOGOUT": "Đăng xuất",
     "CREATE": "Tạo mới",
-    "CANCEL": "Hủy"
+    "CANCEL": "Hủy",
+    "BACK_TO_HOME": "Về trang chủ"
   },
   "MODAL": {
     "OK": "Đồng ý",
-    "CANCEL": "Hủy"
+    "CANCEL": "Hủy",
+    "DELETE": "Xóa"
   }
 }

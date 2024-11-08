@@ -1,7 +1,6 @@
 import { Card, Typography } from 'antd'
 import { useEffect, useState } from 'react'
 import { useTranslation } from 'react-i18next'
-import { useNavigate } from 'react-router-dom'
 
 import { useGetManageAdmins } from '@/api/manageAdmins/useGetManageAdmins'
 import { PrimaryButton } from '@/components/common/button/PrimaryButton'
@@ -14,15 +13,14 @@ import { PageLayout } from '@/layouts/PageLayout'
 import { PrimaryButtonType } from '@/types/enum'
 import { ManageAdminDTO } from '@/types/manageAdmin.type'
 
-export const MamageAdminList = () => {
+export const ManageAdminList = () => {
   const { t } = useTranslation()
   const [searchParams, setSearchParams] = useState<ManageAdminDTO>({})
-  const [isOpen, setIsOpen] = useState(false) // using existing isOpen state
+  const [isOpen, setIsOpen] = useState(false)
 
   const handleOpenModal = () => setIsOpen(true)
 
   const { data: manageAdminData, refetch, isFetching, isLoading } = useGetManageAdmins({ params: searchParams })
-  console.log(manageAdminData?.returnValue)
 
   useEffect(() => {
     refetch()

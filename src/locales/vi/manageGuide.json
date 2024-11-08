@@ -1,4 +1,25 @@
 {
-    "TITLE_PAGE": "Quản lý hướng dẫn viên"
+  "TITLE_PAGE": "Quản lý hướng dẫn viên",
+  "TAB_TITLE_APPROVAL_REQUEST":"Yêu cầu phê duyệt",
+  "TAB_TITLE_PENDING_INTERVIEW":"Chờ phỏng vấn",
+  "TAB_TITLE_REJECTED":"Đã từ chối",
+  "TAB_TITLE_GUIDE_LIST":"Hướng dẫn viên",
+  "FIELD":{
+    "NO": "STT",
+    "FULL_NAME":"Họ tên",
+    "USER_NAME": "Tên người dùng",
+    "EMAIL": "Email",
+    "ROLE": "Quyền hạn",
+    "STATUS": "Trạng thái",
+    "ACTION": "Hành động",
+    "TIME_APPROVAL":"Thời gian phê duyệt",
+    "PROVINCE":"Tỉnh thành",
+    "DATE_INTERVIEW":"Ngày phỏng vấn",
+    "APPROVAL_USER":"Người duyệt",
+    "TIME_REJECT":"Thời gian từ chối",
+    "DATE_ACTIVE":"Ngày kích hoạt",
+    "PHONE":"SĐT",
+    "TOUR":"Tour đã thực hiện",
+    "TRADE_AMOUNT":"Số tiền giao dịch"
   }
-  
+}

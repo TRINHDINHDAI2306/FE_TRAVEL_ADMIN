@@ -4,21 +4,21 @@ import { useTranslation } from 'react-i18next'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { ManageAdmin } from '@/types/manageAdmin.type'
+import { ManageUser } from '@/types/manageUser.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<ManageAdmin>['columns'] = [
+const columns: TableProps<ManageUser>['columns'] = [
   {
-    title: i18n.t('manageAdmin:FIELD.NO'),
+    title: i18n.t('manageUser:FIELD.NO'),
     dataIndex: 'STT',
-    width: '40px',
     key: 'id',
+    width: '40px',
     render(_, record, index) {
       return isDataLoadPage(index) ? <SkeletonRowTable /> : <ColumnEllipsis value={index + 1} />
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.USER_NAME'),
+    title: i18n.t('manageUser:FIELD.USER_NAME'),
     dataIndex: 'username',
     key: 'username',
     render(username) {
@@ -26,7 +26,7 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.EMAIL'),
+    title: i18n.t('manageUser:FIELD.EMAIL'),
     dataIndex: 'email',
     key: 'email',
     render(email) {
@@ -34,15 +34,15 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.ROLE'),
-    dataIndex: 'role',
-    key: 'role',
-    render(role) {
-      return isDataLoadPage(role) ? <SkeletonRowTable /> : <ColumnEllipsis value={role} />
+    title: i18n.t('manageUser:FIELD.PHONE'),
+    dataIndex: 'phone',
+    key: 'phone',
+    render(phone) {
+      return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={[phone]} />
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.STATUS'),
+    title: i18n.t('manageUser:FIELD.STATUS'),
     dataIndex: 'status',
     key: 'status',
     render(status) {
@@ -50,19 +50,19 @@ const columns: TableProps<ManageAdmin>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageAdmin:FIELD.ACTION'),
+    title: i18n.t('manageUser:FIELD.ACTION'),
     dataIndex: 'action',
     key: 'action',
   },
 ]
 
 type Props = {
-  data?: ManageAdmin[]
+  data?: ManageUser[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const ManageAdminTable = ({ data, isLoading, isFetching }: Props) => {
+export const ManageUserTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -74,7 +74,9 @@ export const ManageAdminTable = ({ data, isLoading, isFetching }: Props) => {
         emptyText: t('message:INFO.WEB_I_MSG_001'),
       }}
       columns={columns}
-      dataSource={isLoading ? generateDefaultData<ManageAdmin>(['id', 'username', 'role', 'email', 'status']) : data}
+      dataSource={
+        isLoading ? generateDefaultData<ManageUser>(['id', 'username', 'phone', 'email', 'verifyStatus']) : data
+      }
       bordered
       loading={{
         spinning: isLoading ? false : isFetching,
