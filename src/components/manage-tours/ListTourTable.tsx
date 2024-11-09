@@ -4,12 +4,12 @@ import { useTranslation } from 'react-i18next'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { ManageUser } from '@/types/manageUser.type'
+import { ListTour } from '@/types/manageTour.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<ManageUser>['columns'] = [
+const columns: TableProps<ListTour>['columns'] = [
   {
-    title: i18n.t('manageUser:FIELD.NO'),
+    title: i18n.t('manageTour:FIELD.NO'),
     dataIndex: 'STT',
     key: 'id',
     width: '40px',
@@ -18,51 +18,59 @@ const columns: TableProps<ManageUser>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageUser:FIELD.USER_NAME'),
-    dataIndex: 'username',
-    key: 'username',
-    render(username) {
-      return isDataLoadPage(username) ? <SkeletonRowTable /> : <ColumnEllipsis value={username} />
+    title: i18n.t('manageTour:FIELD.CREATE_DATE'),
+    dataIndex: 'time',
+    key: 'time',
+    render(time) {
+      return isDataLoadPage(time) ? <SkeletonRowTable /> : <ColumnEllipsis value={time} />
     },
   },
   {
-    title: i18n.t('manageUser:FIELD.EMAIL'),
-    dataIndex: 'email',
-    key: 'email',
-    render(email) {
-      return isDataLoadPage(email) ? <SkeletonRowTable /> : <ColumnEllipsis value={email} />
+    title: i18n.t('manageTour:FIELD.TOUR_NAME'),
+    dataIndex: 'name',
+    key: 'name',
+    render(name) {
+      return isDataLoadPage(name) ? <SkeletonRowTable /> : <ColumnEllipsis value={name} />
     },
   },
   {
-    title: i18n.t('manageUser:FIELD.PHONE'),
-    dataIndex: 'phone',
-    key: 'phone',
-    render(phone) {
-      return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={[phone]} />
+    title: i18n.t('manageTour:FIELD.GUIDE'),
+    dataIndex: 'nameGuide',
+    key: 'nameGuide',
+    render(nameGuide) {
+      return isDataLoadPage(nameGuide) ? <SkeletonRowTable /> : <ColumnEllipsis value={nameGuide} />
     },
   },
   {
-    title: i18n.t('manageUser:FIELD.STATUS'),
+    title: i18n.t('manageTour:FIELD.PROVINCE'),
+    dataIndex: 'provice',
+    key: 'provice',
+    render(provice) {
+      return isDataLoadPage(provice) ? <SkeletonRowTable /> : <ColumnEllipsis value={provice} />
+    },
+  },
+  {
+    title: i18n.t('manageTour:FIELD.STATUS'),
     dataIndex: 'status',
     key: 'status',
     render(status) {
       return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
-  }, {
+  },
+  {
     title: i18n.t('manageUser:FIELD.ACTION'),
     dataIndex: 'action',
     key: 'action',
   },
- 
 ]
 
 type Props = {
-  data?: ManageUser[]
+  data?: ListTour[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const ManageUserTable = ({ data, isLoading, isFetching }: Props) => {
+export const ListTourTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -75,7 +83,7 @@ export const ManageUserTable = ({ data, isLoading, isFetching }: Props) => {
       }}
       columns={columns}
       dataSource={
-        isLoading ? generateDefaultData<ManageUser>(['id', 'username', 'phone', 'email', 'verifyStatus']) : data
+        isLoading ? generateDefaultData<ListTour>(['id', 'name', 'nameGuide', 'provice', 'time', 'status']) : data
       }
       bordered
       loading={{

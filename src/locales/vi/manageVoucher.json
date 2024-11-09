@@ -1,4 +1,16 @@
 {
-    "TITLE_PAGE": "Mã giảm giá"
+  "TITLE_PAGE": "Mã giảm giá",
+  "TITLE_CARD": "Tổng số mã giảm giá: ",
+  "FIELD": {
+    "NO": "STT",
+    "NAME_VOUCHER": "Tên mã giảm giá",
+    "CODE_VOUCHER": "Mã giảm giá",
+    "TYPE_CODE": "Loại mã",
+    "VALUE": "Giảm giá",
+    "START_DATE": "Ngày bắt đầu",
+    "END_DATE": "Ngày kết thúc",
+    "COUNT": "Số lượng",
+    "PERCENT": "Phần trăm",
+    "AMOUNT": "Số giảm"
   }
-  
+}

@@ -9,6 +9,8 @@ import { URL } from '@/utils/constants'
 const { ManageAdminList } = lazyImport(() => import('@/pages/manager-admins/ManageAdminList'), 'ManageAdminList')
 const { ManageUserList } = lazyImport(() => import('@/pages/manage-users/ManageUserList'), 'ManageUserList')
 const { ManageGuide } = lazyImport(() => import('@/pages/manage-guides/ManageGuide'), 'ManageGuide')
+const { ManageTour } = lazyImport(() => import('@/pages/manage-tours/ManageTours'), 'ManageTour')
+const { ManageVouchers } = lazyImport(() => import('@/pages/manage-vouchers/ManageVouchers'), 'ManageVouchers')
 
 const routes: RouteObject[] = [
   {
@@ -44,6 +46,22 @@ const routes: RouteObject[] = [
         element: (
           <PageWrapper>
             <ManageGuide />
+          </PageWrapper>
+        ),
+      },
+      {
+        path: URL.MANAGE_TOUR,
+        element: (
+          <PageWrapper>
+            <ManageTour />
+          </PageWrapper>
+        ),
+      },
+      {
+        path: URL.MANAGE_VOUCHER,
+        element: (
+          <PageWrapper>
+            <ManageVouchers />
           </PageWrapper>
         ),
       },

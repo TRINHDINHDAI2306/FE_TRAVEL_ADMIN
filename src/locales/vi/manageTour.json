@@ -1,4 +1,17 @@
 {
-    "TITLE_PAGE": "Quản lý du dịch"
+  "TITLE_PAGE": "Quản lý du dịch",
+  "TAB_TITLE_APPROVAL_REQUEST": "Yêu cầu phê duyệt",
+  "TAB_TITLE_HISTORY_APPROVAL": "Lịch sử phê duyệt",
+  "TAB_TITLE_TOUR_LIST": "Danh sách Tour",
+  "FIELD": {
+    "NO": "STT",
+    "TIME_REQUEST": "Thời gian yêu cầu",
+    "TOUR_NAME": "Tên Tour",
+    "GUIDE": "Hướng dẫn viên",
+    "PROVINCE": "Tỉnh thành",
+    "TIME_APPROVAL":"Thời gian phê duyệt",
+    "STATUS": "Trạng thái",
+    "APPROVAL_USER": "Người duyệt",
+    "CREATE_DATE": "Ngày tạo"
   }
-  
+}

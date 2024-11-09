@@ -35,7 +35,6 @@ export type ListGuide = {
   status: string
 }
 
-// Define DTO for query parameters
 export type GuideDTO = {
   status?: 'PENDING' | 'ACTIVE' | 'REJECTED' | 'WAITING_INTERVIEW'
   limit?: number

@@ -1,8 +1,5 @@
-import { AxiosError } from 'axios'
-import { size } from 'lodash-es'
 
-import { I18nInstance as i18n } from '@/lib/i18n'
-import { Meta, Pagination, ResponseError } from '@/types/common.tsx'
+import { Meta, Pagination } from '@/types/common.tsx'
 import { DATA_DEFAULT } from '@/utils/constants.ts'
 
 export const generateDefaultData = <T>(keys: Array<keyof Partial<T>>) => {

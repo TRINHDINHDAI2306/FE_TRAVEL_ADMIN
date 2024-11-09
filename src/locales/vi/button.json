@@ -5,7 +5,8 @@
     "LOGOUT": "Đăng xuất",
     "CREATE": "Tạo mới",
     "CANCEL": "Hủy",
-    "BACK_TO_HOME": "Về trang chủ"
+    "BACK_TO_HOME": "Về trang chủ",
+    "ADD_VOUCHER":"Thêm mã giảm giá"
   },
   "MODAL": {
     "OK": "Đồng ý",

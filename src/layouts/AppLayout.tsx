@@ -73,7 +73,7 @@ const menuConfigDefault: MenuConfig[] = [
     id: 6,
     title: i18n.t('reportPost:TITLE_PAGE'),
     icon: FormOutlined,
-    href: URL.MANAGE_VOUCHER,
+    href: URL.REPORT_POST,
   },
   {
     id: 7,

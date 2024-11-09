@@ -46,27 +46,27 @@ export const ManageGuide = () => {
   })
 
   return (
-    <PageLayout title={t('manageUser:TITLE_PAGE')}>
-      <PageHeader title={t('manageUser:TITLE_PAGE')} />
+    <PageLayout title={t('manageGuide:TITLE_PAGE')}>
+      <PageHeader title={t('manageGuide:TITLE_PAGE')} />
       <Card>
         <Tabs defaultActiveKey='1'>
           <Tabs.TabPane tab={t('manageGuide:TAB_TITLE_APPROVAL_REQUEST')} key='1'>
             <ApprovalRequestGuideTable
-              data={approvalData?.returnValue?.data}
+              // data={approvalData?.returnValue?.data}
               isFetching={isFetchingApproval}
               isLoading={isLoadingApproval}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={t('manageGuide:TAB_TITLE_PENDING_INTERVIEW')} key='2'>
             <PendingInterviewGuideTable
-              data={interviewData?.returnValue?.data}
+              // data={interviewData?.returnValue?.data}
               isFetching={isFetchingInterview}
               isLoading={isLoadingInterview}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={t('manageGuide:TAB_TITLE_REJECTED')} key='3'>
             <RejectGuideTable
-              data={rejectedData?.returnValue?.data}
+              // data={rejectedData?.returnValue?.data}
               isFetching={isFetchingRejected}
               isLoading={isLoadingRejected}
             />
