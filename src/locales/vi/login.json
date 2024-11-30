@@ -1,0 +1,9 @@
+{
+    "FIELD":{
+      "EMAIL": "Email",
+      "PASSWORD": "Mật Khẩu"
+    },
+    "BUTTON": {
+      "LOGIN": "Đăng Nhập"
+    }
+  }

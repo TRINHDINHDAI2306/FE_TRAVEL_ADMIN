@@ -17,6 +17,7 @@ export const URL = {
   BLOG_DETAIL: '/manage-blog/:id',
   STATISTICS: '/statistics',
   LOGIN: '/login',
+  REGISTER: '/register',
   MANAGE_TOUR: '/manage-tour',
   TOUR_DETAIL: '/manage-tour/:id',
   SYSTEM: '/system',

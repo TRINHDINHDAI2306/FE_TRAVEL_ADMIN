@@ -24,7 +24,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     if (isSuccess) {
-      setAuth(data.metaData)
+      setAuth(data.returnValue)
       setIsInitialize('success')
     }
 

@@ -11,6 +11,8 @@ const { ManageUserList } = lazyImport(() => import('@/pages/manage-users/ManageU
 const { ManageGuide } = lazyImport(() => import('@/pages/manage-guides/ManageGuide'), 'ManageGuide')
 const { ManageTour } = lazyImport(() => import('@/pages/manage-tours/ManageTours'), 'ManageTour')
 const { ManageVouchers } = lazyImport(() => import('@/pages/manage-vouchers/ManageVouchers'), 'ManageVouchers')
+const { ManageBlog } = lazyImport(() => import('@/pages/manage-blog/ManageBlog'), 'ManageBlog')
+const { LoginForm } = lazyImport(() => import('@/components/auth/LoginForm'), 'LoginForm')
 
 const routes: RouteObject[] = [
   {
@@ -65,7 +67,23 @@ const routes: RouteObject[] = [
           </PageWrapper>
         ),
       },
+      {
+        path: URL.MANAGE_BLOG,
+        element: (
+          <PageWrapper>
+            <ManageBlog />
+          </PageWrapper>
+        ),
+      },
     ],
+  },
+  {
+    path: URL.LOGIN,
+    element: (
+      <PageWrapper>
+        <LoginForm />
+      </PageWrapper>
+    ),
   },
   {
     path: '*',

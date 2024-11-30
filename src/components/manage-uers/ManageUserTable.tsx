@@ -48,12 +48,12 @@ const columns: TableProps<ManageUser>['columns'] = [
     render(status) {
       return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
-  }, {
+  },
+  {
     title: i18n.t('manageUser:FIELD.ACTION'),
     dataIndex: 'action',
     key: 'action',
   },
- 
 ]
 
 type Props = {

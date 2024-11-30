@@ -21,7 +21,7 @@ export const ManageAdminList = () => {
   const handleOpenModal = () => setIsOpen(true)
 
   const { data: manageAdminData, refetch, isFetching, isLoading } = useGetManageAdmins({ params: searchParams })
-
+  console.log(manageAdminData)
   useEffect(() => {
     refetch()
   }, [searchParams])
@@ -35,10 +35,14 @@ export const ManageAdminList = () => {
       </PageHeader>
       <Card>
         <Typography.Title level={4} className='!text-red-500'>
-          {t('manageAdmin:TITLE_CARD')} {manageAdminData?.returnValue?.length}
+          {t('manageAdmin:TITLE_CARD')} {manageAdminData?.returnValue?.data?.length || 0}
         </Typography.Title>
-        <ManageAdminTable data={manageAdminData?.returnValue} isLoading={isLoading} isFetching={isFetching} />
-        <TableFooter pagination={manageAdminData?.meta} setSearchParams={setSearchParams} />
+        <ManageAdminTable
+          data={manageAdminData?.returnValue?.data || []}
+          isLoading={isLoading}
+          isFetching={isFetching}
+        />
+        <TableFooter pagination={manageAdminData?.returnValue} setSearchParams={setSearchParams} />
       </Card>
       <CreateAdminModal isModal={isOpen} setIsModal={setIsOpen} />
     </PageLayout>

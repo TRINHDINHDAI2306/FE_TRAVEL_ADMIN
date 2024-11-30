@@ -21,3 +21,11 @@ export enum StatusGuide {
   ACTIVE = 'ACTIVE',
   PENDING = 'PENDING',
 }
+
+
+export enum StatusBlog {
+  WAITING = 'WAITING',
+  REJECTED = 'REJECTED',
+  ACTIVE = 'ACTIVE',
+  PENDING = 'PENDING',
+}

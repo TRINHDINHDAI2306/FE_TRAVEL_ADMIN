@@ -5,7 +5,7 @@ import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query.ts'
 import { TUser } from '@/schemas/auth.schema'
 import { Response } from '@/types/common'
 
-const getMe = () => http.get<Response<TUser>>('/user/me')
+const getMe = () => http.get<Response<TUser>>('/auth/me')
 
 type QueryFnType = typeof getMe
 

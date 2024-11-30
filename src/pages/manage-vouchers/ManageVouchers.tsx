@@ -29,7 +29,7 @@ export const ManageVouchers = () => {
         </PrimaryButton>
       </PageHeader>
       <Card>
-      <Typography.Title level={4} className='!text-red-500'>
+        <Typography.Title level={4} className='!text-red-500'>
           {t('manageVoucher:TITLE_CARD')} {manageVoucherData?.returnValue?.length}
         </Typography.Title>
         <ManageVoucherTable data={manageVoucherData?.returnValue} isFetching={isFetching} isLoading={isLoading} />

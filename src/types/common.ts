@@ -17,7 +17,11 @@ export type Response<T> = {
   details?: []
   metaData?: T
   meta?: Meta
-  returnValue?: T
+  returnValue?: returnValue
+}
+
+export type returnValue = {
+  data: []
 }
 
 export type Pagination = {

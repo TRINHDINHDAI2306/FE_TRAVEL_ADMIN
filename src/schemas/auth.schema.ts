@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { vStringRequired, vNumberBetween } from '@/utils/validate.util.ts'
+import { vNumberRequired, vStringRequired } from '@/utils/validate.util.ts'
 
 export const emailSchema = vStringRequired(i18n.t('form:email')).email(i18n.t('zod:errors.email'))
 
@@ -23,7 +23,7 @@ export const REGISTER_SCHEMA = z
     user_name: vStringRequired(i18n.t('form:name')),
     user_password: passwordSchema,
     user_confirmPassword: vStringRequired(i18n.t('form:confirmPassword')),
-    user_age: vNumberBetween(i18n.t('form:age'), 1, 100),
+    user_age: vNumberRequired(i18n.t('form:age'), 1, 100),
     user_address: vStringRequired(i18n.t('form:address')),
   })
   .refine((data) => data.user_password === data.user_confirmPassword, {

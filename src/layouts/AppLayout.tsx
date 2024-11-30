@@ -21,7 +21,7 @@ import stringify from 'query-string'
 import { FC, useLayoutEffect, useMemo, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useTranslation } from 'react-i18next'
-import { Link, Outlet, useLocation, useMatches } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation, useMatches } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
 
@@ -65,7 +65,7 @@ const menuConfigDefault: MenuConfig[] = [
   },
   {
     id: 5,
-    title: i18n.t('managePost:TITLE_PAGE'),
+    title: i18n.t('manageBlog:TITLE_PAGE'),
     icon: ContainerOutlined,
     href: URL.MANAGE_BLOG,
   },
@@ -150,7 +150,7 @@ export const AdminLayout = () => {
     }
   }, [])
 
-  // if (!auth) return <Navigate to={URL.LOGIN} replace />
+  if (!auth) return <Navigate to={URL.LOGIN} replace />
 
   return (
     <ErrorBoundary FallbackComponent={ErrorFallback}>

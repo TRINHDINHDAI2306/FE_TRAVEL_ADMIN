@@ -9,8 +9,8 @@ interface HttpClientRequestConfig extends AxiosRequestConfig {
 }
 
 type TRefresh = {
-  access_token: string
-  refresh_token: string
+  accessToken: string
+  refreshToken: string
 }
 
 type RequestMethods = Extract<Method, 'get' | 'post' | 'put' | 'delete' | 'patch' | 'options' | 'head'>
@@ -69,17 +69,17 @@ class HttpClient {
             originalRequest._retry = true
 
             try {
-              const { metaData } = await this.post<Response<TRefresh>>('/auth/rftoken', {
+              const { returnValue } = await this.post<Response<TRefresh>>('/auth/rftoken', {
                 data: {
-                  refresh_token: localStorageServices.getRefreshToken(),
+                  refreshToken: localStorageServices.getRefreshToken(),
                   device_id: localStorageServices.getDeviceId(),
                 },
               })
 
-              localStorageServices.setAccessToken(metaData?.access_token)
-              localStorageServices.setRefreshToken(metaData?.refresh_token)
+              localStorageServices.setAccessToken(returnValue?.accessToken)
+              localStorageServices.setRefreshToken(returnValue?.refreshToken)
 
-              if (metaData?.access_token) this.failedQueue.forEach((prom) => prom.resolve(metaData.access_token))
+              if (returnValue?.accessToken) this.failedQueue.forEach((prom) => prom.resolve(returnValue.accessToken))
               return HttpClient.axiosInstance(originalRequest)
             } catch (err) {
               this.failedQueue.forEach((prom) => prom.reject(err))

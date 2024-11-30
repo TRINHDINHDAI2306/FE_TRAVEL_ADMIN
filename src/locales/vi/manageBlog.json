@@ -1,0 +1,15 @@
+{
+  "TITLE_PAGE": "Quản lý bài viết",
+  "TAB_TITLE_APPROVAL_REQUEST": "Yêu cầu phê duyệt",
+  "TAB_TITLE_HISTORY_APPROVAL": "Lịch sử phê duyệt",
+  "TAB_TITLE_REJECT": "Từ chối",
+  "TAB_TITLE_REQUEST_REAPPROVAL": "Yêu cầu duyệt lại",
+  "FIELD": {
+    "NO": "STT",
+    "CREATE_DATE": "Ngày tạo",
+    "TITLE": "Tiêu đề",
+    "AUTHOR": "Tác giả",
+    "STATUS": "Trạng thái",
+    "APPROVAL_USER": "Người duyệt"
+  }
+}

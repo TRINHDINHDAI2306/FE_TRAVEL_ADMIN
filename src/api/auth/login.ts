@@ -8,6 +8,8 @@ import { Response } from '@/types/common.tsx'
 type LoginData = LoginDTO & {
   device_id: string
   ip: string
+  email: string
+  password: string
 }
 
 type LoginResponse = {
@@ -16,7 +18,7 @@ type LoginResponse = {
   device_id: string
 }
 
-const login = (data: LoginData) => http.post<Response<LoginResponse>>(`/user/login`, { data })
+const login = (data: LoginData) => http.post<Response<LoginResponse>>(`/auth/login-admin`, { data })
 
 export const useLogin = (config: MutationConfig<typeof login> = {}) =>
   useMutation({
