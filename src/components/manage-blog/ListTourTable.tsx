@@ -1,16 +1,15 @@
-/* eslint-disable prettier/prettier */
 import { Table, TableProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { RejectedBlog } from '@/types/manageBlog.type'
+import { ListTour } from '@/types/manageTour.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<RejectedBlog>['columns'] = [
+const columns: TableProps<ListTour>['columns'] = [
   {
-    title: i18n.t('manageBlog:FIELD.NO'),
+    title: i18n.t('manageTour:FIELD.NO'),
     dataIndex: 'STT',
     key: 'id',
     width: '40px',
@@ -19,7 +18,7 @@ const columns: TableProps<RejectedBlog>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageBlog:FIELD.CREATE_DATE'),
+    title: i18n.t('manageTour:FIELD.CREATE_DATE'),
     dataIndex: 'time',
     key: 'time',
     render(time) {
@@ -27,19 +26,35 @@ const columns: TableProps<RejectedBlog>['columns'] = [
     },
   },
   {
-    title: i18n.t('manageBlog:FIELD.TITLE'),
-    dataIndex: 'title',
-    key: 'title',
-    render(title) {
-      return isDataLoadPage(title) ? <SkeletonRowTable /> : <ColumnEllipsis value={title} />
+    title: i18n.t('manageTour:FIELD.TOUR_NAME'),
+    dataIndex: 'name',
+    key: 'name',
+    render(name) {
+      return isDataLoadPage(name) ? <SkeletonRowTable /> : <ColumnEllipsis value={name} />
     },
   },
   {
-    title: i18n.t('manageBlog:FIELD.AUTHOR'),
-    dataIndex: ['user',"username"],
-    key: 'user',
-    render(user) {
-      return isDataLoadPage(user) ? <SkeletonRowTable /> : <ColumnEllipsis value={user} />
+    title: i18n.t('manageTour:FIELD.GUIDE'),
+    dataIndex: 'nameGuide',
+    key: 'nameGuide',
+    render(nameGuide) {
+      return isDataLoadPage(nameGuide) ? <SkeletonRowTable /> : <ColumnEllipsis value={nameGuide} />
+    },
+  },
+  {
+    title: i18n.t('manageTour:FIELD.PROVINCE'),
+    dataIndex: 'provice',
+    key: 'provice',
+    render(provice) {
+      return isDataLoadPage(provice) ? <SkeletonRowTable /> : <ColumnEllipsis value={provice} />
+    },
+  },
+  {
+    title: i18n.t('manageTour:FIELD.STATUS'),
+    dataIndex: 'status',
+    key: 'status',
+    render(status) {
+      return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
   },
   {
@@ -50,12 +65,12 @@ const columns: TableProps<RejectedBlog>['columns'] = [
 ]
 
 type Props = {
-  data?: RejectedBlog[]
+  data?: ListTour[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
+export const ListTourTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -68,7 +83,7 @@ export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
       }}
       columns={columns}
       dataSource={
-        isLoading ? generateDefaultData<RejectedBlog>(['id', 'time', 'title', 'user']) : data
+        isLoading ? generateDefaultData<ListTour>(['id', 'name', 'nameGuide', 'provice', 'time', 'status']) : data
       }
       bordered
       loading={{

@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { RejectedBlog } from '@/types/manageBlog.type'
+import { ApprovalRequestBlog } from '@/types/manageBlog.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<RejectedBlog>['columns'] = [
+const columns: TableProps<ApprovalRequestBlog>['columns'] = [
   {
     title: i18n.t('manageBlog:FIELD.NO'),
     dataIndex: 'STT',
@@ -50,12 +50,12 @@ const columns: TableProps<RejectedBlog>['columns'] = [
 ]
 
 type Props = {
-  data?: RejectedBlog[]
+  data?: ApprovalRequestBlog[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
+export const ApprovalRequestBlogTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -68,7 +68,7 @@ export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
       }}
       columns={columns}
       dataSource={
-        isLoading ? generateDefaultData<RejectedBlog>(['id', 'time', 'title', 'user']) : data
+        isLoading ? generateDefaultData<ApprovalRequestBlog>(['id', 'time', 'title', 'user']) : data
       }
       bordered
       loading={{

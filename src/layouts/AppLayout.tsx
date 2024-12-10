@@ -1,9 +1,12 @@
 import {
   BankOutlined,
+  CloudServerOutlined,
   ContainerOutlined,
+  DownOutlined,
   FormOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
+  PieChartOutlined,
   ReconciliationOutlined,
   SnippetsOutlined,
   SolutionOutlined,
@@ -12,13 +15,13 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { Button, Dropdown, Flex, Image, Layout, Menu, MenuProps, Space, theme } from 'antd'
-import { Header } from 'antd/es/layout/layout'
+import { Content, Header } from 'antd/es/layout/layout'
 import Sider from 'antd/es/layout/Sider'
 import stringify from 'query-string'
-import { FC, useLayoutEffect, useState } from 'react'
+import { FC, useLayoutEffect, useMemo, useState } from 'react'
 import { ErrorBoundary } from 'react-error-boundary'
 import { useTranslation } from 'react-i18next'
-import { Link, Navigate, useLocation } from 'react-router-dom'
+import { Link, Navigate, Outlet, useLocation, useMatches } from 'react-router-dom'
 import { QueryParamProvider } from 'use-query-params'
 import { ReactRouter6Adapter } from 'use-query-params/adapters/react-router-6'
 
@@ -90,27 +93,29 @@ const menuConfigDefault: MenuConfig[] = [
     icon: BankOutlined,
     href: URL.MANAGE_WITHDRAWAL,
   },
-  // {
-  //   id: 10,
-  //   title: i18n.t('statistics:TITLE_PAGE'),
-  //   icon: PieChartOutlined,
-  //   href: URL.MANAGE_WITHDRAWAL,
-  // },
-  // {
-  //   id: 11,
-  //   title: i18n.t('systems:TITLE_PAGE'),
-  //   icon: CloudServerOutlined,
-  //   href: URL.MANAGE_WITHDRAWAL,
-  // },
+  {
+    id: 10,
+    title: i18n.t('statistics:TITLE_PAGE'),
+    icon: PieChartOutlined,
+    href: URL.MANAGE_WITHDRAWAL,
+  },
+  {
+    id: 11,
+    title: i18n.t('systems:TITLE_PAGE'),
+    icon: CloudServerOutlined,
+    href: URL.MANAGE_WITHDRAWAL,
+  },
 ]
 
 export const AdminLayout = () => {
   const { t } = useTranslation()
   const [collapsed, setCollapsed] = useState(false)
+  const [title, setTitle] = useState<string>('')
+  const [createLink, setCreateLink] = useState<string>('')
   const {
     token: { colorBgContainer },
   } = theme.useToken()
-  // const matches = useMatches()
+  const matches = useMatches()
   const auth = useAuthStore.use.auth()
   const setAuth = useAuthStore.use.setAuth()
 
@@ -129,15 +134,15 @@ export const AdminLayout = () => {
     },
   ]
 
-  // const isUpsert = useMemo(
-  //   () =>
-  //     location.pathname.includes('create') ||
-  //     location.pathname.includes('edit') ||
-  //     location.pathname.includes('update'),
-  //   [location.pathname],
-  // )
+  const isUpsert = useMemo(
+    () =>
+      location.pathname.includes('create') ||
+      location.pathname.includes('edit') ||
+      location.pathname.includes('update'),
+    [location.pathname],
+  )
 
-  // const isResumes = useMemo(() => location.pathname.includes('resumes'), [location.pathname])
+  const isResumes = useMemo(() => location.pathname.includes('resumes'), [location.pathname])
 
   useLayoutEffect(() => {
     if (!window.navigator.onLine) {
@@ -201,20 +206,29 @@ export const AdminLayout = () => {
                 className='!text-base !w-10 !h-10 !rounded'
               />
               {auth && (
-                <Space className='mr-5 flex items-center' align='center'>
-                  <Image src={logo} width={40} preview={false} className='mt-5' />
+                <Space className='mr-5' align='center'>
+                  <Image
+                    src={auth.user_avatar_url}
+                    height={40}
+                    width={40}
+                    className='flex'
+                    preview={false}
+                    style={{ borderRadius: '50%' }}
+                  />
                   <Dropdown placement='bottom' trigger={['click']} menu={{ items }}>
                     <Button>
-                      <Space>{auth.user_name}</Space>
-                      {t('button:BUTTON.ACCOUNT')}
+                      <Space>
+                        {auth.user_name}
+                        <DownOutlined />
+                      </Space>
                     </Button>
                   </Dropdown>
                 </Space>
               )}
             </Header>
-            {/* <Content className='m-4 min-h-[300px]'>
+            <Content className='m-4 min-h-[300px]'>
               <Outlet context={{ setTitle, setCreateLink }} />
-            </Content> */}
+            </Content>
           </Layout>
         </Layout>
       </QueryParamProvider>

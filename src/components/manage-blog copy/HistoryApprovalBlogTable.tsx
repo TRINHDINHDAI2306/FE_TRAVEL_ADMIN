@@ -5,10 +5,10 @@ import { useTranslation } from 'react-i18next'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
-import { RejectedBlog } from '@/types/manageBlog.type'
+import { HistoryBlog } from '@/types/manageBlog.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<RejectedBlog>['columns'] = [
+const columns: TableProps<HistoryBlog>['columns'] = [
   {
     title: i18n.t('manageBlog:FIELD.NO'),
     dataIndex: 'STT',
@@ -36,26 +36,37 @@ const columns: TableProps<RejectedBlog>['columns'] = [
   },
   {
     title: i18n.t('manageBlog:FIELD.AUTHOR'),
-    dataIndex: ['user',"username"],
+    dataIndex: ["user", "username"],
     key: 'user',
     render(user) {
       return isDataLoadPage(user) ? <SkeletonRowTable /> : <ColumnEllipsis value={user} />
     },
   },
   {
-    title: i18n.t('manageUser:FIELD.ACTION'),
-    dataIndex: 'action',
-    key: 'action',
+    title: i18n.t('manageBlog:FIELD.STATUS'),
+    dataIndex: 'status',
+    key: 'status',
+    render(status) {
+      return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
+    },
+  },
+  {
+    title: i18n.t('manageBlog:FIELD.APPROVAL_USER'),
+    dataIndex: 'approvedBy',
+    key: 'approvedBy',
+    render(approvedBy) {
+      return isDataLoadPage(approvedBy) ? <SkeletonRowTable /> : <ColumnEllipsis value={approvedBy} />
+    },
   },
 ]
 
 type Props = {
-  data?: RejectedBlog[]
+  data?: HistoryBlog[]
   isLoading: boolean
   isFetching: boolean
 }
 
-export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
+export const HistoryApprovalBlogsTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
 
   return (
@@ -68,7 +79,15 @@ export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
       }}
       columns={columns}
       dataSource={
-        isLoading ? generateDefaultData<RejectedBlog>(['id', 'time', 'title', 'user']) : data
+        isLoading
+          ? generateDefaultData<HistoryBlog>([
+              'id',
+              'title',
+              'user',
+              'time',
+              'status',
+            ])
+          : data
       }
       bordered
       loading={{

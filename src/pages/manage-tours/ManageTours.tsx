@@ -4,15 +4,14 @@
 /* eslint-disable import/order */
 import { Card, message, Tabs } from 'antd'
 
+import { useGetManagerTourApproveGuides, useGetManagerTourGuides } from '@/api/manageTour/useManagerTour'
 import { PageHeader } from '@/components/common/PageHeader'
 import { ApprovalRequestTourTable } from '@/components/manage-tours/ApprovalRequestTourTable'
 import { HistoryApprovalTourTable } from '@/components/manage-tours/HistoryApprovalTourTable'
 import { ListTourTable } from '@/components/manage-tours/ListTourTable'
 import { PageLayout } from '@/layouts/PageLayout'
-import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
-import { useGetManagerTourApproveGuides, useGetManagerTourGuides } from '@/api/manageTour/useManagerTour'
-import { useMatch } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 export const ManageTour = () => {
   const { t } = useTranslation()
@@ -66,7 +65,7 @@ export const ManageTour = () => {
             <HistoryApprovalTourTable
               data={
                 data?.returnValue?.data
-                  ? data?.returnValue.data.map((e: any, index) => {
+                  ? data?.returnValue.data.map((e: any, index: number) => {
                       return {
                         ...e,
                         stt: index + 1,
@@ -84,7 +83,7 @@ export const ManageTour = () => {
             <ListTourTable
               data={
                 data?.returnValue?.data
-                  ? data?.returnValue.data.map((e: any, index) => {
+                  ? data?.returnValue.data.map((e: any, index: number) => {
                       return {
                         ...e,
                         stt: index + 1,
