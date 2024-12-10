@@ -35,6 +35,7 @@ export type RegisterDTO = z.infer<typeof REGISTER_SCHEMA>
 
 export type TUser = Omit<RegisterDTO, 'user_confirmPassword' | 'user_password'> & {
   id: number
+  username: string
   user_date_of_birth: string
   user_phone_number: string
   user_sex: string

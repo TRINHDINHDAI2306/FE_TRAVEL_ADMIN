@@ -1,12 +1,10 @@
 import {
   BankOutlined,
-  CloudServerOutlined,
   ContainerOutlined,
   DownOutlined,
   FormOutlined,
   MenuFoldOutlined,
   MenuUnfoldOutlined,
-  PieChartOutlined,
   ReconciliationOutlined,
   SnippetsOutlined,
   SolutionOutlined,
@@ -91,18 +89,6 @@ const menuConfigDefault: MenuConfig[] = [
     id: 9,
     title: i18n.t('manageWithdrawals:TITLE_PAGE'),
     icon: BankOutlined,
-    href: URL.MANAGE_WITHDRAWAL,
-  },
-  {
-    id: 10,
-    title: i18n.t('statistics:TITLE_PAGE'),
-    icon: PieChartOutlined,
-    href: URL.MANAGE_WITHDRAWAL,
-  },
-  {
-    id: 11,
-    title: i18n.t('systems:TITLE_PAGE'),
-    icon: CloudServerOutlined,
     href: URL.MANAGE_WITHDRAWAL,
   },
 ]
@@ -208,17 +194,17 @@ export const AdminLayout = () => {
               {auth && (
                 <Space className='mr-5' align='center'>
                   <Image
-                    src={auth.user_avatar_url}
+                    src={logo}
                     height={40}
                     width={40}
-                    className='flex'
+                    className='flex mt-3'
                     preview={false}
                     style={{ borderRadius: '50%' }}
                   />
                   <Dropdown placement='bottom' trigger={['click']} menu={{ items }}>
                     <Button>
                       <Space>
-                        {auth.user_name}
+                        {auth.username}
                         <DownOutlined />
                       </Space>
                     </Button>
