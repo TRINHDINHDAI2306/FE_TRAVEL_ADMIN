@@ -1,9 +1,14 @@
 {
   "ERROR": {
     "WEB_E_MSG_001":"{{field}} không được để trống",
-    "WEB_E_MSG_002":"Hãy chọn {{field}}"
+    "WEB_E_MSG_002":"Hãy chọn {{field}}",
+    "WEB_E_MSG_003":"Lấy dữ liệu không thành công!"
   },
-  "SUCCESS": {},
+  "SUCCESS": {
+    "WEB_S_MSG_001":"Lấy dữ liệu thành công!",
+    "WEB_S_MSG_002":"Đăng nhập thành công!",
+      "WEB_S_MSG_003":"Tao moi thanh cong!"
+  },
   "INFO": {
     "WEB_I_MSG_001": "Không có dữ liệu tương ứng"
   },

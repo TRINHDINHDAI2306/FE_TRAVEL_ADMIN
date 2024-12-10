@@ -1,4 +1,13 @@
 {
-    "TITLE_PAGE": "Báo cáo bài viết"
-  }
+    "TITLE_PAGE": "Báo cáo bài viết",
+    "TAB_TITLE_REPORT_POST": "Báo cáo bào viết",
+    "TAB_TITLE_HISTORY_APPROVAL": "Lịch sử phê duyệt",
+    "FIELD": {
+      "NO": "STT",
+      "CREATE_DATE": "Thời gian báo cáo",
+      "TITLE": "Mã bài viết",
+      "NOTE": "Nội dung",
+      "AUTHOR": "Người báo cáo"
+    }
+}
   

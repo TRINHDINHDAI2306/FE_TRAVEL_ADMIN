@@ -1,4 +1,15 @@
 {
-    "TITLE_PAGE": "Quản lý rút tiền"
-  }
+    "TITLE_PAGE": "Quản lý rút tiền",
+    "TAB_TITLE_WITHDRAWAL_REQUEST": "Yêu cầu rút tiền",
+    "TAB_TITLE_HISTORY_APPROVAL": "Lịch sử phê duyệt",
+    "FIELD": {
+      "NO": "STT",
+      "CREATE_DATE": "Thời gian yêu cầu",
+      "TITLE": "Mã rút tiền",
+      "AMOUNT": "Số tiền",
+      "AUTHOR": "Tài khoản",
+      "STATUS": "Trạng thái",
+      "USER_GUIDE": "HDV"
+    }
+}
   

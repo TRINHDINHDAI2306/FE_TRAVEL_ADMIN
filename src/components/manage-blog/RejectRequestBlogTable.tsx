@@ -20,10 +20,10 @@ const columns: TableProps<RejectedBlog>['columns'] = [
   },
   {
     title: i18n.t('manageBlog:FIELD.CREATE_DATE'),
-    dataIndex: 'time',
-    key: 'time',
-    render(time) {
-      return isDataLoadPage(time) ? <SkeletonRowTable /> : <ColumnEllipsis value={time} />
+    dataIndex: 'createdAt',
+    key: 'createdAt',
+    render(createdAt) {
+      return isDataLoadPage(createdAt) ? <SkeletonRowTable /> : <ColumnEllipsis value={createdAt} />
     },
   },
   {
@@ -36,7 +36,7 @@ const columns: TableProps<RejectedBlog>['columns'] = [
   },
   {
     title: i18n.t('manageBlog:FIELD.AUTHOR'),
-    dataIndex: ['user',"username"],
+    dataIndex: ['user', 'username'],
     key: 'user',
     render(user) {
       return isDataLoadPage(user) ? <SkeletonRowTable /> : <ColumnEllipsis value={user} />
@@ -67,9 +67,7 @@ export const RejectBlogTable = ({ data, isLoading, isFetching }: Props) => {
         emptyText: t('message:INFO.WEB_I_MSG_001'),
       }}
       columns={columns}
-      dataSource={
-        isLoading ? generateDefaultData<RejectedBlog>(['id', 'time', 'title', 'user']) : data
-      }
+      dataSource={isLoading ? generateDefaultData<RejectedBlog>(['id', 'time', 'title', 'user']) : data}
       bordered
       loading={{
         spinning: isLoading ? false : isFetching,

@@ -7,5 +7,9 @@
     "404": "Trang không tồn tại.",
     "500": "Đã xảy ra lỗi máy chủ.",
     "ERR_NETWORK": "Đã xảy ra lỗi kết nối mạng."
+  },
+  "TABLE": {
+    "TOTAL_ITEMS": "Tổng số lượng",
+    "PAGE": "Trang"
   }
 }

@@ -1,6 +1,5 @@
 export type Meta = {
   total: number
-  itemCount: number
   limit: number
   totalPages: number
   currentPage: number
@@ -21,7 +20,13 @@ export type Response<T> = {
 }
 
 export type returnValue = {
-  data: []
+  data?: []
+  accessToken?: string
+  refreshToken?: string
+  total: number
+  limit: number
+  totalPages: number
+  currentPage: number
 }
 
 export type Pagination = {

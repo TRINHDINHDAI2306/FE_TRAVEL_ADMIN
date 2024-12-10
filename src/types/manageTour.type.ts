@@ -24,3 +24,9 @@ export type ListTour = {
   provice: string
   status: string
 }
+
+export type ManageTourDTO = {
+  status?: string
+  limit?: number
+  skip?: number
+}

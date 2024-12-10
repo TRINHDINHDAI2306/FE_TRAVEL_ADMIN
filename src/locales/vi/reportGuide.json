@@ -1,4 +1,19 @@
 {
-    "TITLE_PAGE": "Báo cáo hướng dẫn viên"
-  }
+    "TITLE_PAGE": "Báo cáo hướng dẫn viên",
+    "TAB_TITLE_TOUR_GUIDE_REPORT": "Báo cáo HDV",
+    "TAB_TITLE_TOUR_GUIDE_PROCESSING": "Đang xử lý",
+    "TAB_TITLE_TOUR_GUIDE_PROCESSED": "Đã xử lý",
+    "FIELD": {
+      "NO": "STT",
+      "CREATE_DATE": "Thời gian yêu cầu",
+      "TIME_START": "Thời gian bắt đầu",
+      "STATUS": "Trạng thái",
+      "CONTENT": "Nội dung báo cáo",
+      "ORDER": "Chuyến đi",
+      "REPORT_BY": "Người báo cáo",
+      "REPORT_NUM": "Số lượt cảnh báo",
+      "MEETING_DATE":"Ngày hẹn làm việc",
+      "EXCHANGE_TIME":"Thời gian trao đổi"
+    }
+}
   

@@ -6,7 +6,8 @@
     "CREATE": "Tạo mới",
     "CANCEL": "Hủy",
     "BACK_TO_HOME": "Về trang chủ",
-    "ADD_VOUCHER":"Thêm mã giảm giá"
+    "ADD_VOUCHER":"Thêm mã giảm giá",
+    "ACCOUNT":"Tài khoản"
   },
   "MODAL": {
     "OK": "Đồng ý",

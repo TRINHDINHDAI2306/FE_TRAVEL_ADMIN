@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { useQuery } from '@tanstack/react-query'
 
 import { http } from '@/lib/http'
@@ -24,3 +25,6 @@ export const useGetManageVouchers = ({ params, config = {} }: TUseGetManageVouch
     queryFn: () => getVouchers(params),
     ...config,
   })
+
+export const handleAddVoucher = (data: TUseGetManageVouchers) =>
+  http.post<Response<TUseGetManageVouchers>>(`/vouchers`, { data })

@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import { Table, TableProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 
@@ -43,9 +44,13 @@ const columns: TableProps<ManageUser>['columns'] = [
   },
   {
     title: i18n.t('manageUser:FIELD.STATUS'),
-    dataIndex: 'status',
-    key: 'status',
-    render(status) {
+    dataIndex: 'verifyStatus',
+    key: 'verifyStatus',
+    render(isStatus) {
+      const status =
+        isStatus == 1
+          ? i18n.t('manageUser:MODAL_MANAGE_ADMIN.ACTIVE')
+          : i18n.t('manageUser:MODAL_MANAGE_ADMIN.INACTIVE')
       return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
   },
@@ -64,6 +69,7 @@ type Props = {
 
 export const ManageUserTable = ({ data, isLoading, isFetching }: Props) => {
   const { t } = useTranslation()
+  console.log(data)
 
   return (
     <Table

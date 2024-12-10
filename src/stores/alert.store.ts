@@ -4,7 +4,7 @@ import { create } from 'zustand'
 import createSelectors from '@/lib/zustand-selectors'
 
 type TAlertConfig =
-  | { type: NoticeType; key: string; message: string | number; field?: string; field2?: string }
+  | { type: NoticeType; key?: string; message: string | number; field?: string; field2?: string }
   | undefined
 
 type TAlertAction = {

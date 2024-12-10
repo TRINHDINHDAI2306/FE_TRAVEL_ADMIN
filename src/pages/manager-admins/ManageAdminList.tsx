@@ -20,11 +20,12 @@ export const ManageAdminList = () => {
 
   const handleOpenModal = () => setIsOpen(true)
 
+  const [keyLoad, setKeyLoad] = useState(1)
+
   const { data: manageAdminData, refetch, isFetching, isLoading } = useGetManageAdmins({ params: searchParams })
-  console.log(manageAdminData)
   useEffect(() => {
     refetch()
-  }, [searchParams])
+  }, [searchParams, keyLoad])
 
   return (
     <PageLayout title={t('manageAdmin:TITLE_PAGE')}>
@@ -44,7 +45,7 @@ export const ManageAdminList = () => {
         />
         <TableFooter pagination={manageAdminData?.returnValue} setSearchParams={setSearchParams} />
       </Card>
-      <CreateAdminModal isModal={isOpen} setIsModal={setIsOpen} />
+      <CreateAdminModal setKeyLoad={() => setKeyLoad(keyLoad + 1)} isModal={isOpen} setIsModal={setIsOpen} />
     </PageLayout>
   )
 }

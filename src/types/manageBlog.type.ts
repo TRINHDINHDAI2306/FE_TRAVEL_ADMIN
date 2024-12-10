@@ -29,7 +29,8 @@ export type ApprovalRequestBlog = {
 }
 
 export type ManageBlogDTO = {
-  status?: 'PENDING' | 'ACTIVE' | 'REJECTED' | 'WAITING'
+  status?: string
   limit?: number
-  type?: 'ApprovalRequestBlog' | 'ReApprovalRequestBlog' | 'RejectedBlog' | 'HistoryBlog'
+  skip?: number
+  type?: string
 }

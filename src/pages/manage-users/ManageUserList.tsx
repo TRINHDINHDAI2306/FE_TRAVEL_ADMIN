@@ -15,25 +15,27 @@ export const ManageUserList = () => {
   const [searchParams, setSearchParams] = useState<ManageUserDTO>({})
   const [isOpen, setIsOpen] = useState(false)
 
+  const [keyLoad, setKeyLoad] = useState(1)
+
   //   const handleOpenModal = () => setIsOpen(true)
 
   const { data: manageUserData, refetch, isFetching, isLoading } = useGetManageUsers({ params: searchParams })
 
   useEffect(() => {
     refetch()
-  }, [searchParams])
+  }, [searchParams, keyLoad])
 
   return (
     <PageLayout title={t('manageUser:TITLE_PAGE')}>
       <PageHeader title={t('manageUser:TITLE_PAGE')}></PageHeader>
       <Card>
         <Typography.Title level={4} className='!text-red-500'>
-          {t('manageUser:TITLE_CARD')} {manageUserData?.returnValue?.length}
+          {t('manageUser:TITLE_CARD')} {manageUserData?.returnValue?.data?.length || 0}
         </Typography.Title>
-        <ManageUserTable data={manageUserData?.returnValue} isLoading={isLoading} isFetching={isFetching} />
-        <TableFooter pagination={manageUserData?.meta} setSearchParams={setSearchParams} />
+        <ManageUserTable data={manageUserData?.returnValue?.data || []} isLoading={isLoading} isFetching={isFetching} />
+        <TableFooter pagination={manageUserData?.returnValue} setSearchParams={setSearchParams} />
       </Card>
-      <CreateAdminModal isModal={isOpen} setIsModal={setIsOpen} />
+      <CreateAdminModal setKeyLoad={() => setKeyLoad(keyLoad + 1)} isModal={isOpen} setIsModal={setIsOpen} />
     </PageLayout>
   )
 }

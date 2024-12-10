@@ -16,9 +16,10 @@ import { MAX_LENGTH } from '@/utils/constants'
 type Props = {
   isModal: boolean
   setIsModal: React.Dispatch<React.SetStateAction<boolean>>
+  setKeyLoad: () => void
 }
 
-export const CreateAdminModal = ({ isModal, setIsModal }: Props) => {
+export const CreateAdminModal = ({ isModal, setIsModal, setKeyLoad }: Props) => {
   const { t } = useTranslation()
   const setAlertConfig = useAlertStore.use.setAlertConfig()
   const setLoadingSpinner = loadingSpinnerStore.use.setLoadingSpinner()
@@ -44,6 +45,7 @@ export const CreateAdminModal = ({ isModal, setIsModal }: Props) => {
           field: t('field:GROUP'),
         })
         setIsModal(false)
+        setKeyLoad()
         reset()
       },
       onSettled: () => setLoadingSpinner(false),

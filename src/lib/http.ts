@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import axios, { AxiosInstance, AxiosRequestConfig, CustomParamsSerializer, Method } from 'axios'
 import { stringify } from 'qs'
 
@@ -79,7 +80,8 @@ class HttpClient {
               localStorageServices.setAccessToken(returnValue?.accessToken)
               localStorageServices.setRefreshToken(returnValue?.refreshToken)
 
-              if (returnValue?.accessToken) this.failedQueue.forEach((prom) => prom.resolve(returnValue.accessToken))
+              if (returnValue?.accessToken)
+                this.failedQueue.forEach((prom: any) => prom.resolve(returnValue?.accessToken))
               return HttpClient.axiosInstance(originalRequest)
             } catch (err) {
               this.failedQueue.forEach((prom) => prom.reject(err))
@@ -138,6 +140,10 @@ class HttpClient {
 
   public delete<T>(url: string, params?: AxiosRequestConfig, config?: HttpClientRequestConfig) {
     return this.request<T>('delete', url, params, config)
+  }
+
+  public put<T>(url: string, data?: any, config?: HttpClientRequestConfig) {
+    return this.request<T>('put', url, { data }, config)
   }
 }
 

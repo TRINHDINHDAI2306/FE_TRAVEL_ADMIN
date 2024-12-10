@@ -35,7 +35,7 @@ export const TableFooter = <T,>({ pagination, setSearchParams }: Props<T>) => {
       setSearchParams((prev) => ({ ...prev, page: pagination.totalPages }))
   }, [pagination?.currentPage, pagination?.totalPages])
 
-  if (!pagination?.total) {
+  if (pagination?.total === undefined || pagination?.total == null) {
     return null
   }
 

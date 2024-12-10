@@ -1,10 +1,16 @@
+/* eslint-disable import/order */
 /* eslint-disable @typescript-eslint/no-unused-vars */
-import { useQuery } from '@tanstack/react-query'
-
 import { http } from '@/lib/http'
-import { ExtractFnReturnType, QueryConfig } from '@/lib/react-query'
+import { QueryConfig } from '@/lib/react-query'
 import { Response } from '@/types/common'
-import {  ManageBlogDTO, ApprovalRequestBlog, RejectedBlog, ReApprovalRequestBlog, HistoryBlog} from '@/types/manageBlog.type'
+import {
+  ApprovalRequestBlog,
+  HistoryBlog,
+  ManageBlogDTO,
+  ReApprovalRequestBlog,
+  RejectedBlog,
+} from '@/types/manageBlog.type'
+import { useQuery } from '@tanstack/react-query'
 
 type BlogResponse = ApprovalRequestBlog | ReApprovalRequestBlog | RejectedBlog | HistoryBlog
 
@@ -23,5 +29,17 @@ export const useGetManageBlogs = <T extends BlogResponse>({ params, config = {} 
     queryKey: [GET_BLOGS, params],
     queryFn: () => getManageBlogs<T>(params),
     ...config,
-})
+  })
 
+type ActivePostData = {
+  postId: number
+  status: string
+}
+
+type ResponseActive = {
+  message: string
+  code: string
+  statusCode: number
+}
+
+export const handleActivePost = (data: ActivePostData) => http.put<Response<ResponseActive>>(`/posts/admin`, data)

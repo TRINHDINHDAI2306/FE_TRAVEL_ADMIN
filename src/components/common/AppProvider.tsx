@@ -24,7 +24,7 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
       }
     }
     if (isSuccess) {
-      setAuth(data.returnValue)
+      setAuth(data?.returnValue as never)
       setIsInitialize('success')
     }
 
@@ -37,9 +37,5 @@ export const AppProvider = ({ children }: { children: ReactNode }) => {
     return null
   }
 
-  return (
-    <>
-      <AnimatePresence>{children}</AnimatePresence>
-    </>
-  )
+  return <AnimatePresence>{children}</AnimatePresence>
 }

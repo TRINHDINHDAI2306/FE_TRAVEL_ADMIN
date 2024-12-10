@@ -36,7 +36,7 @@ export type ListGuide = {
 }
 
 export type GuideDTO = {
-  status?: 'PENDING' | 'ACTIVE' | 'REJECTED' | 'WAITING_INTERVIEW'
+  status?: 'PENDING' | 'ACTIVE' | 'REJECT' | 'WAITING_INTERVIEW'
   limit?: number
   type?: 'ApprovalRequestGuide' | 'PendingInterviewGuide' | 'RejectedGuide' | 'ListGuide'
 }

@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { zodResolver } from '@hookform/resolvers/zod'
-import { Button, Form, Input, message } from 'antd'
-import { FC, useEffect } from 'react'
+import { Button, Col, Form, Image, Input, Typography, message } from 'antd'
+import { FC, useEffect, useState } from 'react'
 import { Controller, SubmitHandler, useForm } from 'react-hook-form'
-import { useTranslation } from 'react-i18next'
+import { useNavigate } from 'react-router-dom'
 
 import logo from '../../assets/logo.png'
 
@@ -13,12 +14,14 @@ import { I18nInstance as i18n } from '@/lib/i18n'
 import { LOGIN_SCHEMA, LoginDTO } from '@/schemas/auth.schema.ts'
 import authStore from '@/stores/auth.store'
 import { LOGIN_FORM_VALUES_DEFAULT } from '@/utils/auth.ts'
+import { API_STATUS } from '@/utils/constants'
 import { localStorageServices } from '@/utils/localStorageServices.ts'
-import { useNavigate } from 'react-router-dom'
 
 export const LoginForm: FC = () => {
   const navigate = useNavigate()
   const setAuth = authStore.use.setAuth()
+  const [isLoading, setIsLoading] = useState<boolean>(false)
+
   const {
     handleSubmit,
     control,
@@ -35,15 +38,18 @@ export const LoginForm: FC = () => {
     isPending: isPendingLogin,
     isSuccess,
   } = useLogin({
-    onError: (error) => {
-      message.error(error.response?.data?.message)
+    onError: (error: any) => {
+      if (error.response?.status === API_STATUS.BAD_REQUEST) {
+        message.error(error.response?.data?.info?.message)
+      }
+      setIsLoading(false)
     },
     onSuccess: (data) => {
       if (data?.returnValue) {
-        localStorageServices.setAccessToken(data?.returnValue?.accessToken || '')
+        localStorageServices.setAccessToken(data?.returnValue?.accessToken)
         localStorageServices.setRefreshToken(data?.returnValue?.refreshToken)
         localStorageServices.setDeviceId(localStorageServices.getDeviceId() ?? 'helodeviceid')
-        navigate('/')
+        message.success(i18n.t('message:SUCCESS.WEB_S_MSG_002'))
       }
     },
     throwOnError: false,
@@ -54,6 +60,12 @@ export const LoginForm: FC = () => {
     throwOnError: false,
   })
 
+  useEffect(() => {
+    if (data?.returnValue) {
+      setAuth(data.returnValue as any)
+      navigate('/')
+    }
+  }, [data])
 
   const onSubmit: SubmitHandler<LoginDTO> = (value) => {
     if (isPendingLogin || isPendingGetMe) return
@@ -67,13 +79,12 @@ export const LoginForm: FC = () => {
   }
 
   return (
-    <div className='w-ful h-full items-center justify-center flex flex-col'>
-      <div className='flex flex-col items-center justify-center mb-2'>
-        <img alt='' className='w-[100px] h-[100px]' src={logo} />
-        <h3 className='text-3xl text-gray-500 font-semibold mt-[-20px]'> TravelVN</h3>
-      </div>
-      <div className='bg-white shadow-xl w-96 p-5 rounded-xl flex flex-col items-center justify-center mt-2 border border-gray-100'>
-        <h1 className='text-2xl text-black font-bold'>Đăng nhập</h1>
+    <Col className='flex flex-col items-center justify-center'>
+      <Image alt='' width={100} height={100} src={logo} />
+      <Typography className='text-3xl text-gray-500 font-semibold mt-[-20px]'> TravelVN</Typography>
+
+      <Col className='bg-white shadow-xl w-96 p-5 rounded-xl flex flex-col items-center justify-center mt-2 border border-gray-100'>
+        <Typography className='text-2xl text-black font-bold'>Đăng nhập</Typography>
         <Form layout='vertical' className='w-full' onFinish={handleSubmit(onSubmit)}>
           <FieldWrapper label={i18n.t('login:FIELD.EMAIL')} required error={errors?.user_email?.message as string}>
             <Controller
@@ -97,12 +108,18 @@ export const LoginForm: FC = () => {
             />
           </FieldWrapper>
           <Form.Item>
-            <Button type='primary' block size='large' htmlType='submit' loading={isPendingLogin || isPendingGetMe}>
+            <Button
+              type='primary'
+              block
+              size='large'
+              htmlType='submit'
+              loading={isPendingLogin || isPendingGetMe || isLoading}
+            >
               {i18n.t('login:BUTTON.LOGIN')}
             </Button>
           </Form.Item>
         </Form>
-      </div>
-    </div>
+      </Col>
+    </Col>
   )
 }

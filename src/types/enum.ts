@@ -17,15 +17,19 @@ export enum SecondaryButtonType {
 
 export enum StatusGuide {
   WAITING_INTERVIEW = 'WAITING_INTERVIEW',
-  REJECTED = 'REJECTED',
+  REJECTED = 'REJECT',
   ACTIVE = 'ACTIVE',
   PENDING = 'PENDING',
 }
 
-
 export enum StatusBlog {
   WAITING = 'WAITING',
-  REJECTED = 'REJECTED',
+  REJECTED = 'REJECT',
   ACTIVE = 'ACTIVE',
   PENDING = 'PENDING',
+}
+
+export enum StatusGuideReport {
+  REPORT = '2',
+  PROCESSED = '1',
 }

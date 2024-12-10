@@ -1,3 +1,5 @@
+/* eslint-disable import/order */
+/* eslint-disable prettier/prettier */
 import { Table, TableProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 
@@ -6,6 +8,7 @@ import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
 import { VoucherList } from '@/types/manageVoucher.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
+import moment from 'moment'
 
 const columns: TableProps<VoucherList>['columns'] = [
   {
@@ -54,7 +57,11 @@ const columns: TableProps<VoucherList>['columns'] = [
     dataIndex: 'startDate',
     key: 'startDate',
     render(startDate) {
-      return isDataLoadPage(startDate) ? <SkeletonRowTable /> : <ColumnEllipsis value={startDate} />
+      return isDataLoadPage(startDate) ? (
+        <SkeletonRowTable />
+      ) : (
+        <ColumnEllipsis value={moment(startDate).format('DD/MM/YYYY HH:mm')} />
+      )
     },
   },
   {
@@ -62,7 +69,11 @@ const columns: TableProps<VoucherList>['columns'] = [
     dataIndex: 'endDate',
     key: 'endDate',
     render(endDate) {
-      return isDataLoadPage(endDate) ? <SkeletonRowTable /> : <ColumnEllipsis value={endDate} />
+      return isDataLoadPage(endDate) ? (
+        <SkeletonRowTable />
+      ) : (
+        <ColumnEllipsis value={moment(endDate).format('DD/MM/YYYY HH:mm')} />
+      )
     },
   },
   {
