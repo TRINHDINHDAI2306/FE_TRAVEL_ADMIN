@@ -46,7 +46,11 @@ const columns: TableProps<HistoryBlog>['columns'] = [
     title: i18n.t('manageBlog:FIELD.STATUS'),
     dataIndex: 'status',
     key: 'status',
-    render(status) {
+    render(isStatus) {
+      const status =
+        isStatus == 'ACTIVE'
+          ? i18n.t('manageUser:MODAL_MANAGE_ADMIN.ACTIVE')
+          : i18n.t('manageUser:MODAL_MANAGE_ADMIN.INACTIVE')
       return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
   },

@@ -53,7 +53,11 @@ const columns: TableProps<HistoryApprovalTour>['columns'] = [
     title: i18n.t('manageTour:FIELD.STATUS'),
     dataIndex: 'status',
     key: 'status',
-    render(status) {
+    render(isStatus) {
+      const status =
+        isStatus == 1
+          ? i18n.t('manageUser:MODAL_MANAGE_ADMIN.ACTIVE')
+          : i18n.t('manageUser:MODAL_MANAGE_ADMIN.INACTIVE')
       return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
     },
   },

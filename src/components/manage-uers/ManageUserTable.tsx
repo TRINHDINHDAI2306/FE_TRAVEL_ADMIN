@@ -39,7 +39,7 @@ const columns: TableProps<ManageUser>['columns'] = [
     dataIndex: 'phone',
     key: 'phone',
     render(phone) {
-      return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={[phone]} />
+      return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={phone} />
     },
   },
   {

@@ -59,6 +59,7 @@ export const ManageTour = () => {
               }
               isLoading={false}
               isFetching={false}
+              refetch={refetch}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={t('manageTour:TAB_TITLE_HISTORY_APPROVAL')} key='2'>

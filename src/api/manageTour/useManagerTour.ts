@@ -40,3 +40,16 @@ export const useGetManagerTourApproveGuides = <T extends ManageTourResponse>({
     queryFn: () => getManagerTourApproveGuides<T>(params),
     ...config,
   })
+
+type ActivePostData = {
+  tourId: number
+  status: string
+}
+
+type ResponseActive = {
+  message: string
+  code: string
+  statusCode: number
+}
+
+export const handleActiveTours = (data: ActivePostData) => http.put<Response<ResponseActive>>(`/tours`, data)
