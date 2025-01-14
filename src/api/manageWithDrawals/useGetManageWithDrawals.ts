@@ -4,26 +4,53 @@ import { useQuery } from '@tanstack/react-query'
 import { http } from '@/lib/http'
 import { QueryConfig } from '@/lib/react-query'
 import { Response } from '@/types/common'
-import { ApprovalRequestWithDrawals, HistoryWithDrawals, ManageWithDrawalsDTO } from '@/types/manageWithDrawals.type'
+import { ManageWithDrawals, ManageWithDrawalsDTO } from '@/types/manageWithDrawals.type'
 
-type ManageWithDrawalsResponse = ApprovalRequestWithDrawals | HistoryWithDrawals
+const getManageWithDrawals = <T extends ManageWithDrawals>(params: ManageWithDrawalsDTO) =>
+  http.get<Response<T[]>>('/transactions/admin', { params })
 
-const getReportBlogs = <T extends ManageWithDrawalsResponse>(params: ManageWithDrawalsDTO) =>
-  http.get<Response<T[]>>('/transactions/request-withdraw', { params })
-
-type TUseGetManageWithDrawals<T extends ManageWithDrawalsResponse> = {
+type TUseGetManageWithDrawals<T extends ManageWithDrawals> = {
   params: ManageWithDrawalsDTO
   config?: QueryConfig<() => Promise<Response<T[]>>>
 }
 
-const GET_REPORT_BLOGS = 'GET_REPORT_BLOGS'
+const GET_ALL_WITHDRAWALS = 'GET_ALL_WITHDRAWALS'
 
-export const useGetManageWithDrawals = <T extends ManageWithDrawalsResponse>({
+export const useGetManageWithDrawals = <T extends ManageWithDrawals>({
   params,
   config = {},
 }: TUseGetManageWithDrawals<T>) =>
   useQuery<Response<T[]>>({
-    queryKey: [GET_REPORT_BLOGS, params],
-    queryFn: () => getReportBlogs<T>(params),
+    queryKey: [GET_ALL_WITHDRAWALS, params],
+    queryFn: () => getManageWithDrawals<T>(params),
+    ...config,
+  })
+
+type ActiveWithdrawalsData = {
+  withdrawId: number
+  action: string
+}
+
+type ResponseActive = {
+  message: string
+  code: string
+  statusCode: number
+}
+
+export const handleActiveWithdrawals = (data: ActiveWithdrawalsData) =>
+  http.put<Response<ResponseActive>>(`/transactions/request-withdraw`, data)
+
+const getManageWithDrawalsWaiting = <T extends ManageWithDrawals>(params: ManageWithDrawalsDTO) =>
+  http.get<Response<T[]>>('/transactions/request-withdraw', { params })
+
+const GET_ALL_WITHDRAWALS_WAITING = 'GET_ALL_WITHDRAWALS_WAITING'
+
+export const useGetManageWithDrawalsWaiting = <T extends ManageWithDrawals>({
+  params,
+  config = {},
+}: TUseGetManageWithDrawals<T>) =>
+  useQuery<Response<T[]>>({
+    queryKey: [GET_ALL_WITHDRAWALS_WAITING, params],
+    queryFn: () => getManageWithDrawalsWaiting<T>(params),
     ...config,
   })

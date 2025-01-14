@@ -32,7 +32,12 @@ export const ManageUserList = () => {
         <Typography.Title level={4} className='!text-red-500'>
           {t('manageUser:TITLE_CARD')} {manageUserData?.returnValue?.data?.length || 0}
         </Typography.Title>
-        <ManageUserTable data={manageUserData?.returnValue?.data || []} isLoading={isLoading} isFetching={isFetching} />
+        <ManageUserTable
+          data={manageUserData?.returnValue?.data || []}
+          isLoading={isLoading}
+          isFetching={isFetching}
+          refetch={refetch}
+        />
         <TableFooter pagination={manageUserData?.returnValue} setSearchParams={setSearchParams} />
       </Card>
       <CreateAdminModal setKeyLoad={() => setKeyLoad(keyLoad + 1)} isModal={isOpen} setIsModal={setIsOpen} />

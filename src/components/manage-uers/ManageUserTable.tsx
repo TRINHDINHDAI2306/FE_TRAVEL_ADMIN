@@ -1,75 +1,110 @@
 /* eslint-disable prettier/prettier */
-import { Table, TableProps } from 'antd'
+import { Button, Space, Table, TableProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 
+import { handleActiveUser } from '@/api/users/useGetManageUser'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
 import { ManageUser } from '@/types/manageUser.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
 
-const columns: TableProps<ManageUser>['columns'] = [
-  {
-    title: i18n.t('manageUser:FIELD.NO'),
-    dataIndex: 'STT',
-    key: 'id',
-    width: '40px',
-    render(_, record, index) {
-      return isDataLoadPage(index) ? <SkeletonRowTable /> : <ColumnEllipsis value={index + 1} />
-    },
-  },
-  {
-    title: i18n.t('manageUser:FIELD.USER_NAME'),
-    dataIndex: 'username',
-    key: 'username',
-    render(username) {
-      return isDataLoadPage(username) ? <SkeletonRowTable /> : <ColumnEllipsis value={username} />
-    },
-  },
-  {
-    title: i18n.t('manageUser:FIELD.EMAIL'),
-    dataIndex: 'email',
-    key: 'email',
-    render(email) {
-      return isDataLoadPage(email) ? <SkeletonRowTable /> : <ColumnEllipsis value={email} />
-    },
-  },
-  {
-    title: i18n.t('manageUser:FIELD.PHONE'),
-    dataIndex: 'phone',
-    key: 'phone',
-    render(phone) {
-      return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={phone} />
-    },
-  },
-  {
-    title: i18n.t('manageUser:FIELD.STATUS'),
-    dataIndex: 'verifyStatus',
-    key: 'verifyStatus',
-    render(isStatus) {
-      const status =
-        isStatus == 1
-          ? i18n.t('manageUser:MODAL_MANAGE_ADMIN.ACTIVE')
-          : i18n.t('manageUser:MODAL_MANAGE_ADMIN.INACTIVE')
-      return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
-    },
-  },
-  {
-    title: i18n.t('manageUser:FIELD.ACTION'),
-    dataIndex: 'action',
-    key: 'action',
-  },
-]
-
 type Props = {
   data?: ManageUser[]
   isLoading: boolean
   isFetching: boolean
+  refetch: () => void
 }
 
-export const ManageUserTable = ({ data, isLoading, isFetching }: Props) => {
+export const ManageUserTable = ({ data, isLoading, isFetching, refetch }: Props) => {
   const { t } = useTranslation()
-  console.log(data)
+
+  const columns: TableProps<ManageUser>['columns'] = [
+    {
+      title: i18n.t('manageUser:FIELD.NO'),
+      dataIndex: 'STT',
+      key: 'id',
+      width: '40px',
+      render(_, record, index) {
+        return isDataLoadPage(index) ? <SkeletonRowTable /> : <ColumnEllipsis value={index + 1} />
+      },
+    },
+    {
+      title: i18n.t('manageUser:FIELD.USER_NAME'),
+      dataIndex: 'username',
+      key: 'username',
+      render(username) {
+        return isDataLoadPage(username) ? <SkeletonRowTable /> : <ColumnEllipsis value={username} />
+      },
+    },
+    {
+      title: i18n.t('manageUser:FIELD.EMAIL'),
+      dataIndex: 'email',
+      key: 'email',
+      render(email) {
+        return isDataLoadPage(email) ? <SkeletonRowTable /> : <ColumnEllipsis value={email} />
+      },
+    },
+    {
+      title: i18n.t('manageUser:FIELD.PHONE'),
+      dataIndex: 'phone',
+      key: 'phone',
+      render(phone) {
+        return isDataLoadPage(phone) ? <SkeletonRowTable /> : <ColumnEllipsis value={phone} />
+      },
+    },
+    {
+      title: i18n.t('manageUser:FIELD.STATUS'),
+      dataIndex: 'verifyStatus',
+      key: 'verifyStatus',
+      render(isStatus) {
+        const status =
+          isStatus == 1
+            ? i18n.t('manageUser:MODAL_MANAGE_ADMIN.ACTIVE')
+            : i18n.t('manageUser:MODAL_MANAGE_ADMIN.INACTIVE')
+        return isDataLoadPage(status) ? <SkeletonRowTable /> : <ColumnEllipsis value={status} />
+      },
+    },
+    {
+      title: i18n.t('manageUser:FIELD.ACTION'),
+      dataIndex: 'action',
+      key: 'action',
+      render(_, record) {
+        return isDataLoadPage(record) ? (
+          <SkeletonRowTable />
+        ) : (
+          <Space className='gap-2'>
+            <Button type='primary' onClick={() => functionActiveUser(record)}>
+              Hoạt động
+            </Button>
+            <Button type='default' onClick={() => functionRejectUser(record)}>
+              Ngưng hoạt động
+            </Button>
+          </Space>
+        )
+      },
+    },
+  ]
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async function functionActiveUser(item: any) {
+    const data = await handleActiveUser({
+      userId: item.id,
+      status: '1',
+    })
+    if (data.statusCode === 200) {
+      refetch()
+    }
+  }
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  async function functionRejectUser(item: any) {
+    const data = await handleActiveUser({
+      userId: item.id,
+      status: '2',
+    })
+    if (data.statusCode === 200) {
+      refetch()
+    }
+  }
 
   return (
     <Table

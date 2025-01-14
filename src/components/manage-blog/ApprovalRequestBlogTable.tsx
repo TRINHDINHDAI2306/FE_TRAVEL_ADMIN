@@ -1,14 +1,14 @@
 /* eslint-disable import/order */
 /* eslint-disable prettier/prettier */
-import { Button, Table, TableProps } from 'antd'
+import { Button, Space, Table, TableProps } from 'antd'
 import { useTranslation } from 'react-i18next'
 
+import { handleActivePost } from '@/api/manageBlogs/useGetBlogs'
 import { ColumnEllipsis } from '@/components/common/table/ColumnEllipsis'
 import { SkeletonRowTable } from '@/components/common/table/SkeletonRowTable'
 import { I18nInstance as i18n } from '@/lib/i18n'
 import { ApprovalRequestBlog } from '@/types/manageBlog.type'
 import { generateDefaultData, isDataLoadPage } from '@/utils/common'
-import { handleActivePost } from '@/api/manageBlogs/useGetBlogs'
 
 type Props = {
   data?: ApprovalRequestBlog[]
@@ -62,9 +62,14 @@ export const ApprovalRequestBlogTable = ({ data, isLoading, isFetching, refetch 
         return isDataLoadPage(record) ? (
           <SkeletonRowTable />
         ) : (
-          <Button type='primary' onClick={() => functionActivePost(record)}>
-            Phê duyệt
-          </Button>
+          <Space className='gap-2'>
+            <Button type='primary' onClick={() => functionActivePost(record)}>
+              Phê duyệt
+            </Button>
+            <Button type='default' onClick={() => functionRejectPost(record)}>
+              Từ chối
+            </Button>
+          </Space>
         )
       },
     },
@@ -79,7 +84,15 @@ export const ApprovalRequestBlogTable = ({ data, isLoading, isFetching, refetch 
       refetch()
     }
   }
-
+  async function functionRejectPost(item: ApprovalRequestBlog) {
+    const data = await handleActivePost({
+      postId: item.id,
+      status: 'REJECTED',
+    })
+    if (data.statusCode === 200) {
+      refetch()
+    }
+  }
   return (
     <Table
       rowKey='id'

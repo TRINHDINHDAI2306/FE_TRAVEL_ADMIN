@@ -24,7 +24,7 @@ export enum StatusGuide {
 
 export enum StatusBlog {
   WAITING = 'WAITING',
-  REJECTED = 'REJECT',
+  REJECTED = 'REJECTED',
   ACTIVE = 'ACTIVE',
   PENDING = 'PENDING',
 }
@@ -32,4 +32,11 @@ export enum StatusBlog {
 export enum StatusGuideReport {
   REPORT = '2',
   PROCESSED = '1',
+}
+
+export enum TransactionStatus {
+  SUCCESS = '1',
+  FAILED = '0',
+  VNPAY_PENDING = '2',
+  WAITING = '3',
 }

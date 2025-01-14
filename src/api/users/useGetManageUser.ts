@@ -22,3 +22,16 @@ export const useGetManageUsers = ({ params, config = {} }: TUseGetManageUsers) =
     queryFn: () => getManageUsers(params),
     ...config,
   })
+
+type ActiveUserData = {
+  userId: number
+  status: string
+}
+
+type ResponseActive = {
+  message: string
+  code: string
+  statusCode: number
+}
+
+export const handleActiveUser = (data: ActiveUserData) => http.put<Response<ResponseActive>>(`/users`, data)

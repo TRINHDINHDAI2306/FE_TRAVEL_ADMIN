@@ -43,7 +43,7 @@ export const useGetManagerTourApproveGuides = <T extends ManageTourResponse>({
 
 type ActivePostData = {
   tourId: number
-  status: string
+  action: string
 }
 
 type ResponseActive = {
